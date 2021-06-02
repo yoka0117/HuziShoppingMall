@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ namespace：必须有值，自定义的唯一字符串
+ 推荐使用：dao 接口的全限定名称
+-->
+<mapper namespace="com.huzi.provider.dao.SaleDao">
+    <!--
+    <select>: 查询数据， 标签中必须是 select 语句
+    id: sql 语句的自定义名称，推荐使用 dao 接口中方法名称，
+    使用名称表示要执行的 sql 语句
+    resultType: 查询语句的返回结果数据类型，使用全限定类名
+    -->
+
+
+
+    <!--//1添加销售单***-->
+    <insert id="addSale"  parameterType="com.huzi.domain.Sale">
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="saleId">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into t_sales(sku_id,amount,order_id,user_id,shop_id,sale_state,already)
+        values(#{skuId},#{amount},#{orderId},#{userId},#{shopId},#{saleState},#{already})
+    </insert>
+
+
+    <resultMap id="saleMap" type="com.huzi.domain.Sale">
+        <id column="sale_id" property="saleId"></id>
+        <result column="sku_id" property="skuId"></result>
+        <result column="amount" property="amount"></result>
+        <result column="user_id" property="userId"></result>
+        <result column="order_id" property="orderId"></result>
+        <result column="shop_id" property="shopId"></result>
+        <result column="sale_state" property="saleState"></result>
+        <result column="already" property="already"></result>
+        <result column="warehouse_id" property="warehouseId"></result>
+    </resultMap>
+
+    <!--通过orderId查找Sale对象-->
+    <select id="selectSaleByOrderId" parameterType="com.huzi.domain.Sale" resultMap="saleMap">
+        select sale_id,sku_id,amount,user_id,order_id,shop_id,sale_state ,already,warehouse_id from t_sales
+        where order_id = #{orderId}
+    </select>
+
+
+
+    <!--改变sale表状态，并填写缺多少货-->
+    <update id="updateSaleState"  parameterType="com.huzi.domain.Sale">
+        update t_sales set sale_state = #{saleState} , already =already + #{already} where sale_id = #{saleId}
+    </update>
+
+
+
+
+
+    <select id="selectSaleBySkuIdAmount" resultMap="saleMap">
+        select sale_id,sku_id,amount,user_id,order_id,shop_id,sale_state ,already ,warehouse_idfrom t_sales
+        where sku_id = #{skuId} and amount = #{amount} and order_id = #{orderId}
+    </select>
+
+
+
+    <select id="selectSaleBySkuIdWarehouseId" parameterType="com.huzi.hzsp.domain.userOrder.Sale" resultMap="saleMap">
+        select * from t_sales where sku_id = #{skuId} and warehouse_id = #{warehouseId}
+    </select>
+</mapper>

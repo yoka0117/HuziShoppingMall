@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.huzi.provider.dao.PurchaseOrderDao">
+
+    <resultMap id="PurchaseOrderMap" type="com.huzi.domain.PurchaseOrder">
+        <id column="purchase_id" property="purchaseId"></id>
+        <result column="purchase_create_time" property="purchaseCreateTime"></result>
+        <result column="purchase_state" property="purchaseState"></result>
+        <result column="purchase_update_time" property="purchaseUpdateTime"></result>
+    </resultMap>
+
+    <resultMap id="OrderDetailsMap" type="com.huzi.domain.OrderDetails">
+        <id column="order_details_id" property="orderDetailsId"></id>
+        <result column="purchase_id" property="purchaseId"></result>
+        <result column="sku_id" property="skuId"></result>
+        <result column="warehouse_id" property="warehouseId"></result>
+        <result column="amount" property="amount"></result>
+        <result column="order_details_state" property="orderDetailsState"></result>
+    </resultMap>
+
+
+    <!--新增空白采购单 (返回采购单id)（赋值创建时间、订单状态）-->
+    <insert id="insertPurchase" parameterType="com.huzi.domain.PurchaseOrder">
+
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="purchaseId">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into t_purchase_order(purchase_create_time,purchase_state)
+        values(#{purchaseCreateTime},#{purchaseState})
+    </insert>
+    <!--创建采购单详情-->
+    <insert id="insertDetails" parameterType="com.huzi.domain.OrderDetails">
+        insert into t_orderdetails (purchase_id,sku_id,warehouse_id,amount)
+        values (#{purchaseId},#{skuId},#{warehouseId},#{amount})
+    </insert>
+
+
+
+
+    <!--根据订单号查询及其详情-->
+    <!--查询采购单（根据订单号查询）-->
+    <select id="selectPurchaseOrderById" parameterType="java.lang.Integer" resultMap="PurchaseOrderMap">
+        select purchase_id,purchase_create_time,purchase_state,purchase_update_time
+            from t_purchase_order
+            where purchase_id = #{purchaseId}
+    </select>
+    <select id="selectOrderDetailsByPurchaseId" parameterType="java.lang.Integer" resultMap="OrderDetailsMap">
+        select order_details_id,purchase_id,sku_id,warehouse_id,amount ,order_details_state from t_orderdetails
+        where purchase_id = #{purchaseId}
+    </select>
+
+
+
+    <!--更改订单状态：作废订单-->
+    <update id="updatePurchase" parameterType="com.huzi.domain.PurchaseOrder">
+        update t_purchase_order set purchase_state = #{purchaseState} ,purchase_update_time = #{purchaseUpdateTime}where purchase_id = #{purchaseId}
+    </update>
+
+
+    <!--查询采购详情单(根据详情id号))-->
+    <select id="selectOrderDetails" parameterType="java.lang.Integer" resultMap="OrderDetailsMap">
+        select order_details_id,purchase_id,sku_id,warehouse_id,amount ,order_details_state from t_orderdetails
+        where order_details_id = #{order_details_id}
+    </select>
+
+
+
+
+
+    <!--更改采购单详情表的状态****-->
+    <update id="updateDetails" parameterType="com.huzi.domain.OrderDetails">
+        update t_orderdetails set order_details_state = #{orderDetailsState} where order_details_id = #{orderDetails_id}
+    </update>
+
+
+
+
+
+    <!--(总览)查询采购单
+    <select id="selectPurchaseOrder" resultMap="PurchaseOrderMap">
+            select purchase_id,sku_id,warehouse_id,purchase_amount,purchase_create_time,purchase_state,purchase_update_time
+            from t_purchase_order
+    </select>-->
+
+
+    <!--查看采购单是否完单
+    <select id="checkState" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select purchase_state from t_purchase_order where purchase_id = #{purchaseId}
+    </select>-->
+
+
+</mapper>

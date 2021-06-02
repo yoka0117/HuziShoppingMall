@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ namespace：必须有值，自定义的唯一字符串
+ 推荐使用：dao 接口的全限定名称
+-->
+<mapper namespace="com.huzi.provider.dao.InventoryDao">
+    <!--
+    <select>: 查询数据， 标签中必须是 select 语句
+    id: sql 语句的自定义名称，推荐使用 dao 接口中方法名称，
+    使用名称表示要执行的 sql 语句
+    resultType: 查询语句的返回结果数据类型，使用全限定类名
+    -->
+    <resultMap id="inventoryMap" type="com.huzi.domain.Inventory">
+        <id column="inventory_id" property="inventoryId"></id>
+        <result column="sku_id" property="skuId"></result>
+        <result column="warehouse_id" property="warehouseId"></result>
+        <result column="inventory_physical" property="physicalInventory"></result>
+        <result column="inventory_real" property="realInventory"></result>
+        <result column="inventory_update_time" property="inventory_update_time"></result>
+    </resultMap>
+
+    <!--添加商品库存(并返回库存id)-->
+    <insert id="insertInventory" parameterType="com.huzi.domain.Inventory" >
+        /*返回库存id*/
+        <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="inventoryId">
+            select LAST_INSERT_ID()
+        </selectKey>
+        insert into t_inventory(sku_id,warehouse_id,inventory_physical,inventory_real)
+        values(#{skuId},#{warehouseId},#{physicalInventory},#{realInventory})
+    </insert>
+
+
+    <!--根据skuId和warehouseId查询Inventory-->
+    <select id="selectInventory" parameterType="com.huzi.domain.Inventory" resultMap="inventoryMap" >
+            select inventory_id,sku_id,warehouse_id,inventory_physical,inventory_real
+            from t_inventory
+            where sku_id = #{skuId} and  warehouse_id = #{warehouseId}
+    </select>
+
+
+    <!--2增加库存-->
+    <update id="updateInventory" parameterType="com.huzi.domain.InventoryParam">
+         update t_inventory set inventory_physical =inventory_physical + #{physicalInventoryAdd},
+                                inventory_real=inventory_real + #{realInventoryAdd},
+                                inventory_update_time = #{inventoryUpdateTime}
+        where inventory_id = #{inventoryId}
+    </update>
+
+
+    <!--扣除真实库存(通过skuId and warehouseId)-->
+    <update id="updateInventoryCutReal" parameterType="com.huzi.domain.InventoryParam">
+        update t_inventory set  inventory_real=inventory_real - #{realInventoryAdd}
+        where sku_id = #{skuId} and warehouse_id = #{warehouseId} and inventory_real - #{realInventoryAdd} >=0
+    </update>
+
+
+    <!--增加real库存(通过skuId and warehouseId)-->
+    <update id="updateInventoryAdd" parameterType="com.huzi.domain.InventoryParam">
+        update t_inventory set  inventory_real=inventory_real + #{realInventoryAdd}
+        where sku_id = #{skuId} and warehouse_id = #{warehouseId}
+    </update>
+
+
+    <!--减少物理physical库存(通过skuId and warehouseId)-->
+    <update id="updateInventoryCutPhysical" parameterType="com.huzi.domain.InventoryParam">
+        update t_inventory set  inventory_physical=inventory_physical - #{physicalInventoryAdd}
+        where sku_id = #{skuId} and warehouse_id = #{warehouseId}
+    </update>
+
+
+
+    <!--查inventory是否更新了时间-->
+    <select id="selectInventoryByUpdateTime" resultMap="inventoryMap">
+        select * from t_inventory where inventory_update_time &lt; date_add(NOW(),INTERVAL  10 MINUTE)
+    </select>
+
+
+
+</mapper>

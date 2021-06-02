@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ namespace：必须有值，自定义的唯一字符串
+ 推荐使用：dao 接口的全限定名称
+-->
+<mapper namespace="com.huzi.provider.dao.SkuDao">
+    <!--
+    <select>: 查询数据， 标签中必须是 select 语句
+    id: sql 语句的自定义名称，推荐使用 dao 接口中方法名称，
+    使用名称表示要执行的 sql 语句
+    resultType: 查询语句的返回结果数据类型，使用全限定类名
+    -->
+    <resultMap id="skuResultMap" type="com.huzi.domain.Sku">
+        <id column="sku_id" property="skuId"></id>
+        <result column="sku_size" property="skuSize"></result>
+        <result column="sku_color" property="skuColor"></result>
+        <result column="goods_id" property="goodsId"></result>
+    </resultMap>
+
+      <!--新增sku-->
+    <insert id="insertSKU" parameterType="com.huzi.domain.Sku">
+        insert into t_sku(sku_size,sku_color,goods_id)
+        values(#{skuSize},#{skuColor},#{goodsId})
+    </insert>
+
+
+
+
+    <resultMap id="selectAll" type="com.huzi.domain.SkuGoods">
+
+        <result property="goodsId" column="goods_id" ></result>
+        <result property="goodsName" column="goods_name" ></result>
+        <result property="goodsIntroduce" column="goods_introduce"></result>
+        <result property="skuId" column="sku_id" ></result>
+        <result property="skuSize" column="sku_size"></result>
+        <result property="skuColor" column="sku_color"></result>
+    </resultMap>
+
+    <!--查看所有商品 sku + goods 详情-->
+    <select id="selectSkuAndGoods" resultMap="selectAll">
+        select
+            s.sku_id ,s.sku_size,s.sku_color,g.goods_id,g.goods_name,g.goods_introduce
+        from
+            t_sku s
+        join
+            t_goods g
+        on
+            s.goods_id = g.goods_id
+    </select>
+
+
+
+
+    <select id="selectSKU" resultType="com.huzi.hzsp.domain.product.SKU">
+        select sku_id,sku_size,sku_color,goods_id from t_sku
+    </select>
+
+
+
+    <select id="selectSkuById" parameterType="java.lang.Integer" resultMap="skuResultMap">
+        select sku_id,sku_size,sku_color,goods_id from t_sku where sku_id = #{skuId}
+    </select>
+
+</mapper>

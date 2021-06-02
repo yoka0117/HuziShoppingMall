@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+ namespace：必须有值，自定义的唯一字符串
+ 推荐使用：dao 接口的全限定名称
+-->
+<mapper namespace="com.huzi.provider.dao.GoodsDao">
+    <!--
+    <select>: 查询数据， 标签中必须是 select 语句
+    id: sql 语句的自定义名称，推荐使用 dao 接口中方法名称，
+    使用名称表示要执行的 sql 语句
+    resultType: 查询语句的返回结果数据类型，使用全限定类名
+    -->
+<resultMap id="goodsMap" type="com.huzi.domain.Goods">
+    <id column="goods_id" property="goodsId"/>
+    <result column="goods_name" property="goodsName"/>
+    <result column="goods_introduce" property="goodsIntroduce"/>
+</resultMap>
+
+
+    <!--1查询goods商品-->
+    <select id="selectGoods" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select * from t_goods where goods_id = #{goodsId}
+    </select>
+
+    <!--2添加商品-->
+    <insert id="insertGoods" parameterType="com.huzi.domain.Goods" >
+        insert into t_goods(goods_name,goods_introduce)
+        values(#{goodsName},#{goodsIntroduce})
+    </insert>
+
+    <!--3删除商品-->
+    <delete id="deleteGoodsById" parameterType="java.lang.Integer">
+        delete from t_goods where goods_id =#{goodsId}
+    </delete>
+
+
+</mapper>
