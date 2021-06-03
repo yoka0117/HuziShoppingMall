@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -93,27 +94,15 @@ public class SaleController {
     public ModelAndView reserve(){
         ModelAndView mv = new ModelAndView();
         String tip = null;
-        int result = 0;
 
-        result = orderService.reserve();
 
-        if (result == 1){
-            tip = "order不存在";
-        }else if (result == 2){
-            tip = "order已经为预定状态";
-        }else if (result == 3){
-            tip = "sale不存在";
-        }else if (result == 4){
-            tip = "库存不存在";
-        }else if(result == 5 ){
-            tip = "预定成功";
-        }else if(result == 6 ){
-            tip = "real库存还没有上新";
-        }else if (result == 7){
-            tip = "此订单还有预约没有完全完成";
+        int result = orderService.reserve();
+        if (result == 0){
+            tip = "预定功能操作成功！ 此次操作时间为：" + new Date();
         }
+
         mv.addObject("result" , tip);
-        mv.setViewName("result");
+        mv.setViewName("sale/automaticReserve");
         return mv;
     }
 

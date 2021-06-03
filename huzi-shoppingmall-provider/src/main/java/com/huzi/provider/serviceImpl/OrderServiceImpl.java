@@ -4,7 +4,7 @@ package com.huzi.provider.serviceImpl;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.huzi.common.PurchaseOrderStatus;
 import com.huzi.domain.*;
-import com.huzi.provider.serviceImpl.exception.BusinessException;
+
 import com.huzi.provider.dao.InventoryDao;
 import com.huzi.provider.dao.OrderDao;
 import com.huzi.provider.dao.SaleDao;
@@ -51,52 +51,51 @@ public class OrderServiceImpl implements OrderService {
         return 0;
     }
 
-
+/*逻辑：
+*      （1）处理状态为init的订单：没库存/有足够库存/没有足够库存
+*      （2）处理状态为lack的订单：没库存/有足够库存/没有足够库存
+*      （3）根据sale状态，处理order状态
+* */
     //预定库存(支持部分预订)------------------------------------------------------
     @Override
     public int reserve() {
 
-        //查所有order的状态
-        List<UserOrder> orderList = orderDao.selectOrderAll();
-
-        for (UserOrder order : orderList) {
-            //获取订单状态
-            String orderState = order.getOrderState();
-            //（1）如果order的状态是SUCCESS
-            if (PurchaseOrderStatus.SUCCESS.name().equals(orderState)) {
-                return 2;// tip = "order已经为预定状态";
+        //(1)查所有order的状态为init的订单
+        UserOrder userOrderInit = new UserOrder();
+        userOrderInit.setOrderState(PurchaseOrderStatus.INIT.name());
+        List<UserOrder> orderInitList =orderDao.selectOrderByState(userOrderInit);
+        for (UserOrder order : orderInitList) {
+            //在t_order表中获取warehouseId
+            Integer warehouseId = order.getWarehouseId();
+            //在t_sale表中通过orderId，获取所有有关的SALE对象,List<Sale>
+            Sale sale = new Sale();
+            sale.setOrderId(order.getOrderId());
+            List<Sale> saleList = saleDao.selectSaleByOrderId(sale);
+            if (saleList == null) {
+                continue;
             }
-            //（2）如果order的状态是INIT（需处理）
-            if (PurchaseOrderStatus.INIT.name().equals(orderState)) {
-                //在t_order表中获取warehouseId
-                Integer warehouseId = order.getWarehouseId();
-                //在t_sale表中通过orderId，获取所有有关的SALE对象,List<Sale>
-                Sale sale = new Sale();
-                sale.setOrderId(order.getOrderId());
-                List<Sale> saleList = saleDao.selectSaleByOrderId(sale);
-                //判断一下，Sale是否存在
-                if (saleList.size() == 0) return 3; //tip = "sale不存在";
-                //获取所有的skuId和amount
-                for (Sale sales : saleList) {
-                    Integer skuId = sales.getSkuId();
-                    Integer amount = sales.getAmount();
-                    //查询有关库存Inventory是否存在
-                    Inventory inventory = new Inventory();
-                    inventory.setSkuId(skuId);
-                    inventory.setWarehouseId(warehouseId);
-                    Inventory it = inventoryDao.selectInventory(inventory);
-                    if (it == null) return 4; // tip = "库存不存在";
-                    //**准备进行库存操作**
-                    //根据skuId和warehouseId，先判断real库存数量是否为0。如果为0，则直接更新sale表中的状态为缺货
-                    Integer realInventory = it.getRealInventory();
-                    if (realInventory == 0) {
-                        sales.setSaleState(PurchaseOrderStatus.LACK.name());
-                        sales.setAlready(0);
-                        //更改为缺货状态，并填写已经准备好的数量
-                        saleDao.updateSaleState(sales);
-                        //
-                    }
-                    //如果real库存不为0
+            //获取所有的skuId和amount
+            for (Sale sales : saleList) {
+                Integer skuId = sales.getSkuId();
+                Integer amount = sales.getAmount();
+                //查询有关库存Inventory是否存在
+                Inventory inventory = new Inventory();
+                inventory.setSkuId(skuId);
+                inventory.setWarehouseId(warehouseId);
+                Inventory it = inventoryDao.selectInventory(inventory);
+                if (it == null) {
+                    continue;
+                }
+                //**准备进行库存操作**
+                //根据skuId和warehouseId，先判断real库存数量是否为0。如果为0，则直接更新sale表中的状态为缺货
+                Integer realInventory = it.getRealInventory();
+                if (realInventory == 0) {
+                    sales.setSaleState(PurchaseOrderStatus.LACK.name());
+                    sales.setAlready(0);
+                    //更改为缺货状态，并填写已经准备好的数量
+                    saleDao.updateSaleState(sales);
+                } else {
+                    //real库存不为0
                     //将sale属性，装进InventoryParam对象中
                     InventoryParam inventoryParam = new InventoryParam();
                     inventoryParam.setWarehouseId(warehouseId);
@@ -121,38 +120,61 @@ public class OrderServiceImpl implements OrderService {
                         saleDao.updateSaleState(sales);
                     }
                 }
-            }
 
-            //(3)如果order的状态是LACK（需处理）
-            if (PurchaseOrderStatus.LACK.name().equals(orderState)) {
+            }
+            //（3）检查所有的sale状态，如果都为success，则改变对应order订单的状态
+            for (Sale sales : saleList) {
+                if (!PurchaseOrderStatus.SUCCESS.name().equals(sales.getSaleState())) {
+                    order.setOrderState(PurchaseOrderStatus.LACK.name());
+                    orderDao.updateOrder(order);
+                }
+            }
+            //走到这里，所有sale状态都为success了
+            order.setOrderState(PurchaseOrderStatus.SUCCESS.name());
+            orderDao.updateOrder(order);
+        }
+
+
+            //(2)查所有order的状态为LACK的订单
+            UserOrder userOrderLack = new UserOrder();
+            userOrderLack.setOrderState(PurchaseOrderStatus.LACK.name());
+            List<UserOrder> orderLackList =orderDao.selectOrderByState(userOrderLack);
+            for (UserOrder userOrder : orderLackList) {
                 //在t_order表中获取warehouseId
-                Integer warehouseId = order.getWarehouseId();
+                Integer warehouseId = userOrder.getWarehouseId();
                 //在t_sale表中通过orderId，获取所有有关的SALE对象,List<Sale>
                 Sale sale = new Sale();
-                sale.setOrderId(order.getOrderId());
+                sale.setOrderId(userOrder.getOrderId());
                 List<Sale> saleList = saleDao.selectSaleByOrderId(sale);
+                //如果为空
+                if (saleList == null) {
+                    continue;
+                }
                 //循环遍历
                 for (Sale sales : saleList) {
-                    //看一下哪个sale的状态是LACK
-                    if (PurchaseOrderStatus.LACK.name().equals(sales.getSaleState())) {
-                        //如果是LACK走此处：拿到此sale的skuId，amount，already的值
-                        Integer skuId = sales.getSkuId();
-                        Integer amount = sales.getAmount();
-                        Integer already = sales.getAlready();
-                        //查询有关库存是否存在
-                        Inventory inventory = new Inventory();
-                        inventory.setSkuId(skuId);
-                        inventory.setWarehouseId(warehouseId);
-                        Inventory it = inventoryDao.selectInventory(inventory);
-                        if (it == null) return 4;    //  tip = "库存不存在";
-                        //此时取出仓库里真实库存的值，看看是否为0
-                        Integer realInventory = it.getRealInventory();
-                        if (realInventory == 0) return 6; // tip = "real库存距离上次缺货还没有上新";
+                    Integer skuId = sales.getSkuId();
+                    Integer amount = sales.getAmount();
+                    Integer already = sales.getAlready();
+                    //查询有关库存是否存在
+                    Inventory inventory = new Inventory();
+                    inventory.setSkuId(skuId);
+                    inventory.setWarehouseId(warehouseId);
+                    Inventory it = inventoryDao.selectInventory(inventory);
+                    //如果不存在
+                    if (it == null) {
+                        continue;
+                    }
+                    //此时取出仓库里真实库存的值，看看是否为0
+                    Integer realInventory = it.getRealInventory();
+                    if (realInventory == 0) {
+                        continue;
+                    } else {
                         //如果不为0，则开始扣库存
                         //将sale属性，装进InventoryParam对象中
                         InventoryParam inventoryParam = new InventoryParam();
                         inventoryParam.setWarehouseId(warehouseId);
                         inventoryParam.setSkuId(skuId);
+                        //原数量减已经预定成功的数量
                         inventoryParam.setRealInventoryAdd(amount - already);
                         int result = inventoryDao.updateInventoryCutReal(inventoryParam);
                         //判断结果
@@ -168,32 +190,26 @@ public class OrderServiceImpl implements OrderService {
                             inventoryDao.updateInventoryCutReal(inventoryParam);
                             //2.更新已经预约的数量
                             sales.setAlready(realInventory + already);
+                            sales.setSaleState(PurchaseOrderStatus.LACK.name());
                             saleDao.updateSaleState(sales);
                         }
                     }
+
                 }
-            }
-            //检查所有的sale状态，如果都为success，则改变order订单的状态
-            Sale sale = new Sale();
-            sale.setOrderId(order.getOrderId());
-            List<Sale> saleList = saleDao.selectSaleByOrderId(sale);
-            for (Sale sales : saleList) {
-                if (!PurchaseOrderStatus.SUCCESS.name().equals(sales.getSaleState())) {
-                    //throw new BusinessException(sales.getOrderId().toString(),"sale未完单");
-                    order.setOrderState(PurchaseOrderStatus.LACK.name());
-                    orderDao.updateOrder(order);
-                    return 7;    // tip = "此订单还有预约没有完全完成";
+                //（3）检查所有的sale状态，如果都为success，则改变对应order订单的状态
+                for (Sale sales : saleList) {
+                    if (!PurchaseOrderStatus.SUCCESS.name().equals(sales.getSaleState())) {
+                        userOrder.setOrderState(PurchaseOrderStatus.LACK.name());
+                        orderDao.updateOrder(userOrder);
+                    }
                 }
+                //走到这里，所有sale状态都为success了
+                userOrder.setOrderState(PurchaseOrderStatus.SUCCESS.name());
+                orderDao.updateOrder(userOrder);
             }
 
-            //走到这里，所有sale状态都为success了
-            order.setOrderState(PurchaseOrderStatus.SUCCESS.name());
-            orderDao.updateOrder(order);
 
-
-        }
-
-        return 5;   //预订成功
+        return 0;
 
     }
     //----------------------------------------------------------------------------------------

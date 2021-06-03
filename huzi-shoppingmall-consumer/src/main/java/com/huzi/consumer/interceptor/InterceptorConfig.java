@@ -22,7 +22,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
 
         //排除哪些不用拦截
         String[] excludePathPatterns ={
-                "/huzi/user/out","/huzi/user/error","/huzi/user/login"
+                "/huzi/user/login"
         };
 
         UserInterceptor userInterceptor = new UserInterceptor();

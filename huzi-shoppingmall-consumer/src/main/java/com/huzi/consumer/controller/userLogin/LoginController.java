@@ -3,13 +3,16 @@ package com.huzi.consumer.controller.userLogin;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzi.domain.User;
-import com.huzi.service.GoodsService;
+
+import com.huzi.domain.UserLoginInformation;
 import com.huzi.service.UserLoinService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Calendar;
+import java.util.Date;
 
 @Controller
 @RequestMapping("user")
@@ -22,7 +25,7 @@ public class LoginController {
 
 
     @RequestMapping("/login")
-    public String  login(HttpServletRequest request,String userName,String passWord){
+    public String  login(HttpServletResponse response, String userName, String passWord){
 
         //查看是否为null，账号、密码是否正确
         if (null == userName ||  null == passWord ) return "login/error";
@@ -32,8 +35,21 @@ public class LoginController {
         if (userLoinService.selectUserByNameAndPassWord(user) == null){
             return "login/error";
         }
-        //将用户的信息存入session中
-        request.getSession().setAttribute("user",user);
+
+
+        String sessionId = new Date() + userName;
+        //得到几天后的时间
+        Calendar now = Calendar.getInstance();
+        now.setTime(new Date());
+        now.add(Calendar.DAY_OF_YEAR,5);
+
+        UserLoginInformation userLoginInformation = new UserLoginInformation();
+        userLoginInformation.setSessionId(sessionId);
+        userLoginInformation.setUserName(userName);
+        userLoginInformation.setCreatTime(new Date());
+        userLoginInformation.setEffectiveTime(now.getTime());
+        Cookie cookie = new Cookie("sessionId",sessionId);
+        response.addCookie(cookie);
 
 
         return "login/loginSuccess";
