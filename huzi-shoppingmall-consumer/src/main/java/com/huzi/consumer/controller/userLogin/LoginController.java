@@ -5,7 +5,8 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzi.domain.User;
 
 import com.huzi.domain.UserLoginInformation;
-import com.huzi.service.UserLoinService;
+import com.huzi.service.UserLoginInformationService;
+import com.huzi.service.UserLoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,10 +19,11 @@ import java.util.Date;
 @RequestMapping("user")
 public class LoginController {
 
-    @Reference(interfaceClass = UserLoinService.class,version = "1.0.0" ,check = false)
-    private UserLoinService userLoinService;
+    @Reference(interfaceClass = UserLoginService.class,version = "1.0.0" ,check = false)
+    private UserLoginService userLoginService;
 
-
+    @Reference(interfaceClass = UserLoginInformationService.class,version = "1.0.0" ,check = false)
+    private UserLoginInformationService userLoginInformationService;
 
 
     @RequestMapping("/login")
@@ -32,7 +34,7 @@ public class LoginController {
         User user = new User();
         user.setUserName(userName);
         user.setPassWord(passWord);
-        if (userLoinService.selectUserByNameAndPassWord(user) == null){
+        if (userLoginService.selectUserByNameAndPassWord(user) == null){
             return "login/error";
         }
 
@@ -48,6 +50,8 @@ public class LoginController {
         userLoginInformation.setUserName(userName);
         userLoginInformation.setCreatTime(new Date());
         userLoginInformation.setEffectiveTime(now.getTime());
+        userLoginInformationService.insertUserLoginInformation(userLoginInformation);
+
         Cookie cookie = new Cookie("sessionId",sessionId);
         response.addCookie(cookie);
 

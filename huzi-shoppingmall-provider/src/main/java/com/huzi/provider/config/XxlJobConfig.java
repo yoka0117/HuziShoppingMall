@@ -1,4 +1,4 @@
-package com.huzi.consumer.config;
+package com.huzi.provider.config;
 
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
 import org.slf4j.Logger;

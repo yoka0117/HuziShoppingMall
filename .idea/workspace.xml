@@ -2,25 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56f8c19f-6961-4714-a6f1-cc0d20fde9f7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/HuziShoppingMall - 副本.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/UserLoginInformation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoginInformationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/config/XxlJobConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/jobhandler/demoHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/templates/sale/automaticReserve.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoginInformationDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoginInformationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserLoginInformationDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoginDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/jobhandler/demoHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoginInformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoginInformationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoginService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/config/XxlJobConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/config/XxlJobConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/GoodsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/sale/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/sale/SaleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/userLogin/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/userLogin/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/interceptor/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/interceptor/InterceptorConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/interceptor/UserInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/interceptor/UserInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/jobhandler/demoHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoginInformationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoginInformationDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoinDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/InventoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoginInformationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoginInformationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoinServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserLoginDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserLoginInformationDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserLoginInformationDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +78,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -84,32 +88,32 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-consumer\src\main\resources\templates\goods" />
-      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-provider\src\main\resources\mapper" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.huzi.provider" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-provider\src\main\resources\mapper" />
-      <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-consumer\src\main\resources\templates\sale" />
-      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-provider\src\main\resources\mapper" />
-      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-consumer\src\main\java\com\huzi\consumer" />
-      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-consumer\src\main\resources\templates\sale" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.huzi.consumer.jobhandler" />
-      <recent name="com.huzi.consumer.config" />
-      <recent name="com.huzi.provider.dao" />
-      <recent name="com.huzi.service" />
-      <recent name="com.huzi.domain" />
-    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.huzi.provider.serviceImpl" />
       <recent name="com.huzi.provider.dao" />
       <recent name="com.huzi.service" />
       <recent name="com.huzi.serviceImpl" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.huzi.provider" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-provider\src\main\java\com\huzi\provider" />
+      <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-provider\src\main\resources\mapper" />
+      <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-consumer\src\main\resources\templates\sale" />
+      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-provider\src\main\resources\mapper" />
+      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-consumer\src\main\java\com\huzi\consumer" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.huzi.provider.config" />
+      <recent name="com.huzi.provider.jobhandler" />
+      <recent name="com.huzi.consumer.jobhandler" />
+      <recent name="com.huzi.consumer.config" />
+      <recent name="com.huzi.provider.dao" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-consumer\src\main\resources\templates\goods" />
+      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-provider\src\main\resources\mapper" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.HuziShoppingmallConsumerApplication">
@@ -172,18 +176,31 @@
       <workItem from="1622185777694" duration="14208000" />
       <workItem from="1622371229160" duration="11777000" />
       <workItem from="1622636959045" duration="26000" />
-      <workItem from="1622710212872" duration="9311000" />
+      <workItem from="1622710212872" duration="9443000" />
+      <workItem from="1622796740274" duration="9044000" />
     </task>
+    <task id="LOCAL-00001" summary="2021.6.3">
+      <created>1622719770343</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1622719770343</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2021.6.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.6.3" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="1381" y="373" key="#Project_Structure" timestamp="1622371446357">
+    <state x="1381" y="373" key="#Project_Structure" timestamp="1622806059207">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1381" y="373" key="#Project_Structure/0.0.2560.1400@0.0.2560.1400" timestamp="1622371446357" />
+    <state x="1381" y="373" key="#Project_Structure/0.0.2560.1400@0.0.2560.1400" timestamp="1622806059207" />
     <state x="1020" y="327" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621856376194">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -196,22 +213,26 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1180" y="547" key="#com.intellij.ide.util.PackageChooserDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622382168308" />
-    <state x="1687" y="676" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1622376531435">
+    <state x="1687" y="676" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1622799985807">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1687" y="676" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622376531435" />
+    <state x="1687" y="676" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622799985807" />
     <state x="1976" y="630" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1621768379662">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1976" y="630" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.2560.1400@0.0.2560.1400" timestamp="1621768379662" />
+    <state x="973" y="17" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1622797783867">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="973" y="17" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622797783867" />
     <state x="1023" y="455" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622717801579">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1023" y="455" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622717801579" />
-    <state x="692" y="316" key="CommitChangelistDialog2" timestamp="1622637611175">
+    <state x="692" y="316" key="CommitChangelistDialog2" timestamp="1622719769534">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="692" y="316" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1622637611175" />
+    <state x="692" y="316" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1622719769534" />
     <state x="76" y="148" key="DiffContextDialog" timestamp="1622637589541">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -268,14 +289,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1804" height="573" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
+    <state x="618" y="398" key="Maven.ArtifactSearchDialog" timestamp="1622802676869">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="618" y="398" key="Maven.ArtifactSearchDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622802676869" />
     <state x="663" y="363" key="SettingsEditor" timestamp="1621854393103">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="663" y="363" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1621854393103" />
-    <state x="783" y="450" key="Vcs.Push.Dialog.v2" timestamp="1622637629218">
+    <state x="783" y="450" key="Vcs.Push.Dialog.v2" timestamp="1622806743880">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="783" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1622637629218" />
+    <state x="783" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1622806743880" />
     <state x="1237" y="529" key="chooseDestDirectoryDialog" timestamp="1622717879061">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

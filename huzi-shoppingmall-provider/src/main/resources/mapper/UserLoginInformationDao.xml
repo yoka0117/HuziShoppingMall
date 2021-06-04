@@ -26,7 +26,10 @@
         select * from t_login where session_id = #{sessionId}
     </select>
 
-
+    <insert id="insertUserLoginInformation" parameterType="com.huzi.domain.UserLoginInformation">
+        insert into t_login (session_id ,creat_time ,effective_time,user_name)
+        value (#{sessionId},#{creatTime},#{effectiveTime},#{userName})
+    </insert>
 
 
 

@@ -10,6 +10,6 @@ public interface InventoryService {
     //仓库管理员管理仓库订单
     String PurchaseOrderByUser(Integer purchaseId, Integer orderDetailsId);
 
-    //查Inventory（是否更新）
-    Inventory selectInventoryUpdateTime();
+
+
 }

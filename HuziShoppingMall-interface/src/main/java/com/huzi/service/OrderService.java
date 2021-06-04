@@ -24,9 +24,6 @@ public interface OrderService {
     int orderDelivery(Integer orderId, List<OrderDelivery> orderDelivery);
 
 
-
-    //预订库存（支持部分预订） 新版
-    //2021.4.29版本
-    int reserve2();
-    int reserve3();
+    /*****/
+    void checkInventoryUpdateTime();
 }

@@ -17,10 +17,6 @@ public class GoodsController {
     @Reference(interfaceClass = GoodsService.class,version = "1.0.0" ,check = false)
     private GoodsService goodsService;
 
-
-
-
-
     //通过ID查询商品
     @RequestMapping("/goodsById")
     public String selectGoodsById(Integer goodsId, Model model){
@@ -33,7 +29,6 @@ public class GoodsController {
             return "goods/goodsError";
         }
     }
-
 
     //添加goods商品
     @RequestMapping("/insertGoods")
@@ -48,8 +43,6 @@ public class GoodsController {
         mv.setViewName("goods/insertGoods");
         return mv;
     }
-
-
 
     //删除商品
     @RequestMapping("/deleteGoods")

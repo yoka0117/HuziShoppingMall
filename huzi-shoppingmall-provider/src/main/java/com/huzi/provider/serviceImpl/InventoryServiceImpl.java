@@ -112,11 +112,6 @@ public class InventoryServiceImpl implements InventoryService {
 
 
 
+    //--------------------------------------------------------------------
 
-
-    //查Inventory（是否更新）
-    @Override
-    public Inventory selectInventoryUpdateTime() {
-        return inventoryDao.selectInventoryByUpdateTime();
-    }
 }

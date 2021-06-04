@@ -6,7 +6,7 @@
  namespace：必须有值，自定义的唯一字符串
  推荐使用：dao 接口的全限定名称
 -->
-<mapper namespace="com.huzi.provider.dao.UserLoinDao">
+<mapper namespace="com.huzi.provider.dao.UserLoginDao">
     <!--
     <select>: 查询数据， 标签中必须是 select 语句
     id: sql 语句的自定义名称，推荐使用 dao 接口中方法名称，
@@ -22,6 +22,8 @@
 <select id="checkUser" parameterType="com.huzi.domain.User" resultMap="UserMap">
     select * from t_user where user_name = #{userName} and user_pass_word = #{passWord}
 </select>
+
+
 
 
 </mapper>

@@ -178,31 +178,7 @@ public class SaleController {
 
 
 
-    //------------------------------------------------------------------------------
 
-    //预定库存(支持部分预订)新版
-    //自动预订去除success状态的订单order
-    //只查询init的订单 处理
-    //如果进货了，就会将相关缺货订单补上
-    //库存表添加 “补货时间” 字段
-    //sale表添加 “仓库id”  字段
-    @RequestMapping("/reserve2")
-    public ModelAndView reserve2(){
-        ModelAndView mv = new ModelAndView();
-        String tip = null;
-        int result = 0;
-        result = orderService.reserve2();
-        //查询一下最近1分钟库存有没有更新
-        if (inventoryService.selectInventoryUpdateTime() != null) {
-            //此时显示有更新
-            orderService.reserve3();
-        }
-
-        mv.addObject("result" , tip);
-        mv.setViewName("result");
-        return mv;
-
-    }
 
 
 }

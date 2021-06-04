@@ -19,4 +19,14 @@ public class UserLoginInformationServiceImpl implements UserLoginInformationServ
     public UserLoginInformation selectBySessionId(String sessionId) {
         return userLoginInformationDao.selectBySessionId(sessionId);
     }
+
+    //添加用户登录信息
+    @Override
+    public int insertUserLoginInformation(UserLoginInformation userLoginInformation) {
+
+        return userLoginInformationDao.insertUserLoginInformation(userLoginInformation);
+    }
+
+
+
 }
