@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
-//商品库存相关功能
+//商品库存相关功能---2021.6.8
 @Controller
-@RequestMapping("/inventory")
+@RequestMapping("inventory")
 public class InventoryController {
 
 
@@ -34,7 +34,9 @@ public class InventoryController {
     }
 
 
-    //仓库管理员管理仓库订单
+
+
+    //仓库管理员管理仓库订单 -----
     @RequestMapping("/inventoryState")
     public ModelAndView inventoryState(Integer purchaseId, Integer orderDetailsId){
         ModelAndView mv = new ModelAndView();

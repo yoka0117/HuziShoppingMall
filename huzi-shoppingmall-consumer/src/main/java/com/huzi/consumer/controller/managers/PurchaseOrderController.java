@@ -14,7 +14,7 @@ import java.util.List;
 
 //仓库管理员管理商品的采购
 @Controller
-@RequestMapping("/purchase")
+@RequestMapping("purchase")
 public class PurchaseOrderController {
 
     @Reference(interfaceClass = PurchaseOrderService.class,version = "1.0.0" ,check = false)
@@ -22,7 +22,7 @@ public class PurchaseOrderController {
 
 
 
-    // 新增采购单
+    // 新增采购单***2021.6.8
     @RequestMapping("/insertPurchase")
     public ModelAndView insertPurchase(String skuId , String warehouseId, String amount){
         ModelAndView mv  = new ModelAndView();

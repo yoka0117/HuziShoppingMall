@@ -9,6 +9,8 @@ import com.huzi.provider.dao.InventoryDao;
 import com.huzi.provider.dao.OrderDao;
 import com.huzi.provider.dao.SaleDao;
 import com.huzi.service.OrderService;
+import com.huzi.warehouseprovider.service.OrderManagementService;
+import com.huzi.warehouseprovider.service.impl.OrderManagementServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,49 +53,39 @@ public class OrderServiceImpl implements OrderService {
         return 0;
     }
 
-/*逻辑：
+/*逻辑：/***调用的service应该在另一个新建的当中
 *      （1）处理状态为init的订单：没库存/有足够库存/没有足够库存
 *      （2）处理状态为lack的订单：没库存/有足够库存/没有足够库存
 *      （3）根据sale状态，处理order状态
 * */
     //预定库存(支持部分预订)------------------------------------------------------
     @Override
-    public int reserve() {
+    public int reserve1() {
 
-        //(1)查所有order的状态为init的订单
-        UserOrder userOrderInit = new UserOrder();
-        userOrderInit.setOrderState(PurchaseOrderStatus.INIT.name());
-        List<UserOrder> orderInitList =orderDao.selectOrderByState(userOrderInit);
-        checkOrder(orderInitList);
-
-        //(2)查所有order的状态为LACK的订单
-        UserOrder userOrderLack = new UserOrder();
-        userOrderLack.setOrderState(PurchaseOrderStatus.LACK.name());
-        List<UserOrder> orderLackList =orderDao.selectOrderByState(userOrderLack);
-        checkOrder(orderLackList);
-
-
-        return 0;
-
-    }
-
-    @Transactional
-    public void checkOrder(List<UserOrder> userOrderList){
-
-        for (UserOrder order : userOrderList) {
+        //(1)查所有order的状态为init\LACK的订单
+        List<UserOrder> orderLists =orderDao.selectOrderByState2();
+        for(UserOrder order: orderLists){
+            System.out.println("order" + order.getOrderId());
             //在t_order表中获取warehouseId
             Integer warehouseId = order.getWarehouseId();
             //在t_sale表中通过orderId，获取所有有关的SALE对象,List<Sale>
             Sale sale = new Sale();
             sale.setOrderId(order.getOrderId());
             List<Sale> saleList = saleDao.selectSaleByOrderId(sale);
-            if (saleList == null) {
-                continue;
-            }
+            reserve2(saleList,warehouseId,order);
+        }
+        return 0;
+
+    }
+
+    @Transactional
+    public void reserve2(List<Sale> saleList , Integer warehouseId,UserOrder order){
+
             //布尔标记//
             Boolean tip = true;
             //获取所有的skuId和amount
             for (Sale sales : saleList) {
+                System.out.println("sale " + sales.getSaleId());
                 Integer skuId = sales.getSkuId();
                 Integer amount = sales.getAmount();
                 Integer already = sales.getAlready();
@@ -102,7 +94,7 @@ public class OrderServiceImpl implements OrderService {
                 inventory.setSkuId(skuId);
                 inventory.setWarehouseId(warehouseId);
                 Inventory it = inventoryDao.selectInventory(inventory);
-                if (it == null) {
+                if (null == it) {
                     continue;
                 }
                 //**准备进行库存操作**
@@ -146,12 +138,12 @@ public class OrderServiceImpl implements OrderService {
             if (tip != false){
                 order.setOrderState(PurchaseOrderStatus.SUCCESS.name());
                 orderDao.updateOrder(order);
+                OrderManagementService orderManagementService = new OrderManagementServiceImpl();
+                orderManagementService.insertOrderManagement(order);
             }else {
                 order.setOrderState(PurchaseOrderStatus.LACK.name());
                 orderDao.updateOrder(order);
             }
-
-        }
     }
 
 
@@ -184,9 +176,9 @@ public class OrderServiceImpl implements OrderService {
         Integer warehouseId = userOrder.getWarehouseId();
 
 
-        //判断order对象，状态是否为success 或者  init
-        if (PurchaseOrderStatus.INIT.name().equals(userOrder.getOrderState())) {
-            return 2;                   // tip = "此order状态为init" ;
+        //判断order对象，状态是否为success 或者  init lack
+        if (!PurchaseOrderStatus.SUCCESS.name().equals(userOrder.getOrderState())) {
+            return 2;                   // tip = "此order状态为init/lack" ;
         }
         //如果为success
         else if (PurchaseOrderStatus.SUCCESS.name().equals(userOrder.getOrderState())) {
@@ -220,8 +212,23 @@ public class OrderServiceImpl implements OrderService {
     //------------------------------------------------------------------
     //订单出库确认
     @Override
-    public int orderDelivery(Integer orderId, List<OrderDelivery> orderDelivery) {
-        //根据orderId找出相关的详情信息
+    public void orderDelivery(UserOrder userOrder) {
+
+        //第一步：根据orderId，查找对应的List<Sale>
+        Integer orderId = userOrder.getOrderId();
+        List<Sale> saleList = saleDao.selectSaleByOrderIdNumber(orderId);
+
+        //第二步：循环遍历saleList，取出每个sale的skuId，warehouseId，amount
+        for (Sale sale :saleList){
+            //按skuId和warehouseId去扣除对应Inventory的物理库存
+            InventoryParam inventoryParam = new InventoryParam();
+            inventoryParam.setSkuId(sale.getSkuId());
+            inventoryParam.setWarehouseId(sale.getWarehouseId());
+            inventoryParam.setPhysicalInventoryAdd(sale.getAmount());
+            inventoryDao.updateInventoryCutPhysical(inventoryParam);
+        }
+
+        /*//根据orderId找出相关的详情信息
         UserOrder order = new UserOrder();
         order.setOrderId(orderId);
         UserOrder order1 = orderDao.selectOrder(order);
@@ -285,7 +292,7 @@ public class OrderServiceImpl implements OrderService {
         order1.setOrderState(PurchaseOrderStatus.DELIVERY.name());
         orderDao.updateOrder(order1);
 
-        return 0;  // result = "成功出库";
+        return 0;  // result = "成功出库";*/
     }
 
 
@@ -297,7 +304,7 @@ public class OrderServiceImpl implements OrderService {
     public void checkInventoryUpdateTime() {
         Inventory inventory = inventoryDao.selectInventoryByUpdateTime();
         if (inventory != null ){
-            reserve();
+            reserve1();
         }
     }
 

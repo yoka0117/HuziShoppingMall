@@ -19,7 +19,7 @@ import java.util.List;
 
 //用户购买等相关功能
 @Controller
-@RequestMapping("/Sale")
+@RequestMapping("Sale")
 public class SaleController {
 
     @Reference(interfaceClass = WarehouseService.class,version = "1.0.0" ,check = false)
@@ -54,7 +54,7 @@ public class SaleController {
         WarehouseRegionMapper warehouseRegionIds = warehouseService.selectMapper(wrm);
         //创建Order订单,并返回orderId
         Integer orderId = orderService.addOrder(warehouseRegionIds);
-        if (orderId != 0) {
+        if (orderId > 0) {
             //创建Sale对象
             //创建一个List对象装Sale对象
             List<Sale> saleList = new ArrayList<>();
@@ -66,6 +66,7 @@ public class SaleController {
                 sale.setShopId(shopId);
                 sale.setOrderId(orderId);
                 sale.setUserId(userId);
+                sale.setWarehouseId(warehouseRegionIds.getWarehouseId());
                 sale.setSaleState(PurchaseOrderStatus.INIT.name());
                 saleList.add(sale);
             }
@@ -96,9 +97,11 @@ public class SaleController {
         String tip = null;
 
 
-        int result = orderService.reserve();
+        int result = orderService.reserve1();
         if (result == 0){
             tip = "预定功能操作成功！ 此次操作时间为：" + new Date();
+        }else {
+            tip ="失败" + new Date();
         }
 
         mv.addObject("result" , tip);
@@ -120,13 +123,13 @@ public class SaleController {
         if (result == 1){
             tip = "此order不存在";
         }else if(result == 2){
-            tip = "此order状态为init";
+            tip = "此order状态为init/或lack状态";
         }else if (result == 3){
             tip = "取消预订成功";
         }
 
         mv.addObject("result",tip);
-        mv.setViewName("result");
+        mv.setViewName("sale/cancelReserve");
         return mv;
     }
 
@@ -135,7 +138,7 @@ public class SaleController {
 
     //----------------------------------------------------------
     //预订成功的订单出库
-    @RequestMapping("/orderDelivery")
+   /* @RequestMapping("/orderDelivery")
     public ModelAndView orderDelivery(Integer orderId, String skuId, String warehouseId, String amount){
         ModelAndView mv = new ModelAndView();
         String result = "";
@@ -172,7 +175,7 @@ public class SaleController {
         mv.addObject("result",result);
         mv.setViewName("result");
         return mv;
-    }
+    }*/
 
 
 

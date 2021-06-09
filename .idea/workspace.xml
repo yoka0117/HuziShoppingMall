@@ -2,29 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56f8c19f-6961-4714-a6f1-cc0d20fde9f7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoginDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/jobhandler/demoHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/templates/sale/cancelReserve.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/main/java/com/huzi/warehouseprovider/WarehouseProviderApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/main/java/com/huzi/warehouseprovider/dao/OrderManagementDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/main/java/com/huzi/warehouseprovider/domain/OrderManagement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/main/java/com/huzi/warehouseprovider/service/OrderManagementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/main/java/com/huzi/warehouseprovider/service/impl/OrderManagementServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/main/resources/mapper/GoodsDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/warehouse-provider/src/test/java/com/huzi/warehouseprovider/WarehouseProviderApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/InventoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/InventoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/common/PurchaseOrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/common/PurchaseOrderStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/OrderDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/OrderDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/PurchaseOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/PurchaseOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoginInformationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoginInformationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoinService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/UserLoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/Inventory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/InventoryParam.class" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/InventoryParam.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/OrderDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/OrderDetails.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/PurchaseOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/PurchaseOrder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/Sku.class" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/Sku.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/SkuGoods.class" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/target/classes/com/huzi/domain/SkuGoods.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/config/XxlJobConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/config/XxlJobConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/SkuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/SkuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/managers/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/managers/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/managers/PurchaseOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/managers/PurchaseOrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/sale/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/sale/SaleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/userLogin/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/userLogin/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/jobhandler/demoHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/templates/purchaseOrder/completePurchase.html" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/templates/purchaseOrder/completePurchase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/templates/sku/SkuAndGoods.html" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/resources/templates/sku/SkuAndGoods.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoginInformationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoginInformationDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/UserLoinDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/config/XxlJobConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/config/XxlJobConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/GoodsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/GoodsDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/OrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/SaleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/SaleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/jobhandler/demoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/jobhandler/demoHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/InventoryServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoginInformationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoginInformationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoinServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/UserLoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/SaleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/SaleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserLoginDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserLoginInformationDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/UserLoginInformationDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/OrderDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/OrderDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/SaleDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/SaleDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/SkuDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/SkuDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +64,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -61,12 +91,16 @@
     <option name="vmOptions" value="-DarchetypeCatalog=internal" />
   </component>
   <component name="ProjectId" id="1stmaBjK0EMw4ZlblkLihGuCTT8" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -78,7 +112,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/warehouse-provider/src/main/resources/mapper" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -89,20 +123,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.huzi.warehouseprovider.dao" />
+      <recent name="com.huzi.warehouseprovider.service.impl" />
       <recent name="com.huzi.provider.serviceImpl" />
       <recent name="com.huzi.provider.dao" />
       <recent name="com.huzi.service" />
-      <recent name="com.huzi.serviceImpl" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.huzi.provider" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Desktop\HuziShoppingMall - 副本 - 副本\warehouse-provider\src\main\resources\mapper" />
+      <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-consumer\src\main\resources\templates\sale" />
       <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-provider\src\main\java\com\huzi\provider" />
       <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-provider\src\main\resources\mapper" />
-      <recent name="G:\Desktop\HuziShoppingMall - 副本\huzi-shoppingmall-consumer\src\main\resources\templates\sale" />
       <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-provider\src\main\resources\mapper" />
-      <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-consumer\src\main\java\com\huzi\consumer" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.huzi.provider.config" />
@@ -112,11 +147,12 @@
       <recent name="com.huzi.provider.dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Desktop\HuziShoppingMall - 副本 - 副本\HuziShoppingMall-interface\src\main\java\com\huzi" />
       <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-consumer\src\main\resources\templates\goods" />
       <recent name="G:\Desktop\HuziShoppingMall\huzi-shoppingmall-provider\src\main\resources\mapper" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.HuziShoppingmallConsumerApplication">
+  <component name="RunManager" selected="Spring Boot.HuziShoppingmallProviderApplication">
     <configuration name="HuziShoppingmallConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="huzi-shoppingmall-consumer" />
       <extension name="coverage">
@@ -146,14 +182,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WarehouseProviderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="warehouse-provider" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.huzi.warehouseprovider.WarehouseProviderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Spring Boot.HuziShoppingmallConsumerApplication" />
       <item itemvalue="Spring Boot.HuziShoppingmallProviderApplication" />
+      <item itemvalue="Spring Boot.WarehouseProviderApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.HuziShoppingmallConsumerApplication" />
         <item itemvalue="Spring Boot.HuziShoppingmallProviderApplication" />
+        <item itemvalue="Spring Boot.HuziShoppingmallConsumerApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -177,7 +221,13 @@
       <workItem from="1622371229160" duration="11777000" />
       <workItem from="1622636959045" duration="26000" />
       <workItem from="1622710212872" duration="9443000" />
-      <workItem from="1622796740274" duration="9044000" />
+      <workItem from="1622796740274" duration="9670000" />
+      <workItem from="1623057072270" duration="4473000" />
+      <workItem from="1623071002514" duration="2494000" />
+      <workItem from="1623128331175" duration="9075000" />
+      <workItem from="1623156281288" duration="4023000" />
+      <workItem from="1623224363771" duration="582000" />
+      <workItem from="1623224980268" duration="7250000" />
     </task>
     <task id="LOCAL-00001" summary="2021.6.3">
       <created>1622719770343</created>
@@ -186,29 +236,42 @@
       <option name="project" value="LOCAL" />
       <updated>1622719770343</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="2021.6.4">
+      <created>1622806766167</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1622806766167</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="2021.6.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="2021.6.3" />
+    <MESSAGE value="2021.6.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="2021.6.4" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1381" y="373" key="#Project_Structure" timestamp="1622806059207">
+    <state x="1136" y="259" key="#Inspections" timestamp="1623072751636">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1381" y="373" key="#Project_Structure/0.0.2560.1400@0.0.2560.1400" timestamp="1622806059207" />
-    <state x="1020" y="327" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621856376194">
+    <state x="1136" y="259" key="#Inspections/0.0.2560.1400@0.0.2560.1400" timestamp="1623072751636" />
+    <state x="1381" y="373" key="#Project_Structure" timestamp="1623234596549">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1020" y="327" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1621856376194" />
-    <state x="1711" y="387" key="#com.intellij.ide.util.MemberChooser" timestamp="1622717885297">
+    <state x="1381" y="373" key="#Project_Structure/0.0.2560.1400@0.0.2560.1400" timestamp="1623234596549" />
+    <state x="759" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623072310354">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1711" y="387" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1622717885297" />
+    <state x="759" y="349" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1623072310354" />
+    <state x="1711" y="387" key="#com.intellij.ide.util.MemberChooser" timestamp="1623234712921">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1711" y="387" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1623234712921" />
     <state x="1180" y="547" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1622382168308">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -229,10 +292,18 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1023" y="455" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622717801579" />
-    <state x="692" y="316" key="CommitChangelistDialog2" timestamp="1622719769534">
+    <state x="877" y="434" key="#xdebugger.evaluate" timestamp="1623156529539">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="692" y="316" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1622719769534" />
+    <state x="877" y="434" key="#xdebugger.evaluate/0.0.2560.1400@0.0.2560.1400" timestamp="1623156529539" />
+    <state x="692" y="316" key="CommitChangelistDialog2" timestamp="1622806765482">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="692" y="316" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1622806765482" />
+    <state width="444" height="466" key="DebuggerActiveHint" timestamp="1623158880702">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="444" height="466" key="DebuggerActiveHint/0.0.2560.1400@0.0.2560.1400" timestamp="1623158880702" />
     <state x="76" y="148" key="DiffContextDialog" timestamp="1622637589541">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -241,54 +312,54 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1693" y="406" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1621854390588" />
-    <state width="1804" height="573" key="GridCell.Tab.0.bottom" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.0.bottom" timestamp="1623160340307">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.0.center" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340307" />
+    <state width="1617" height="323" key="GridCell.Tab.0.center" timestamp="1623160340306">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.0.left" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340306" />
+    <state width="1617" height="323" key="GridCell.Tab.0.left" timestamp="1623160340306">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.0.right" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340306" />
+    <state width="1617" height="323" key="GridCell.Tab.0.right" timestamp="1623160340306">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.1.bottom" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340306" />
+    <state width="1617" height="323" key="GridCell.Tab.1.bottom" timestamp="1623160340307">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.1.center" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340307" />
+    <state width="1617" height="323" key="GridCell.Tab.1.center" timestamp="1623160340307">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.1.left" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340307" />
+    <state width="1617" height="323" key="GridCell.Tab.1.left" timestamp="1623160340307">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.1.right" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340307" />
+    <state width="1617" height="323" key="GridCell.Tab.1.right" timestamp="1623160340307">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.2.bottom" timestamp="1621868375217">
+    <state width="1617" height="323" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340307" />
+    <state width="2253" height="562" key="GridCell.Tab.2.bottom" timestamp="1623160340302">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.2.center" timestamp="1621868375217">
+    <state width="2253" height="562" key="GridCell.Tab.2.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340302" />
+    <state width="2253" height="562" key="GridCell.Tab.2.center" timestamp="1623160340302">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.2.left" timestamp="1621868375217">
+    <state width="2253" height="562" key="GridCell.Tab.2.center/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340302" />
+    <state width="2253" height="562" key="GridCell.Tab.2.left" timestamp="1623160340302">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
-    <state width="1804" height="573" key="GridCell.Tab.2.right" timestamp="1621868375217">
+    <state width="2253" height="562" key="GridCell.Tab.2.left/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340302" />
+    <state width="2253" height="562" key="GridCell.Tab.2.right" timestamp="1623160340302">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1804" height="573" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1621868375217" />
+    <state width="2253" height="562" key="GridCell.Tab.2.right/0.0.2560.1400@0.0.2560.1400" timestamp="1623160340302" />
     <state x="618" y="398" key="Maven.ArtifactSearchDialog" timestamp="1622802676869">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -297,25 +368,37 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="663" y="363" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1621854393103" />
-    <state x="783" y="450" key="Vcs.Push.Dialog.v2" timestamp="1622806743880">
+    <state x="783" y="450" key="Vcs.Push.Dialog.v2" timestamp="1622807343179">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="783" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1622806743880" />
+    <state x="783" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1622807343179" />
     <state x="1237" y="529" key="chooseDestDirectoryDialog" timestamp="1622717879061">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1237" y="529" key="chooseDestDirectoryDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1622717879061" />
-    <state x="671" y="444" key="new project wizard" timestamp="1621857545717">
+    <state x="783" y="448" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1623158050038">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="671" y="444" key="new project wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1621857545717" />
-    <state x="1434" y="356" width="672" height="677" key="run.anything.popup" timestamp="1622190752576">
+    <state x="783" y="448" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.2560.1400@0.0.2560.1400" timestamp="1623158050038" />
+    <state x="1128" y="101" width="1072" height="1151" key="dock-window-1" timestamp="1623236991196">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1434" y="356" width="672" height="677" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1622190752576" />
-    <state x="1201" y="352" key="search.everywhere.popup" timestamp="1622715098997">
+    <state x="1128" y="101" width="1072" height="1151" key="dock-window-1/0.0.2560.1400@0.0.2560.1400" timestamp="1623236991196" />
+    <state x="956" y="433" width="647" height="534" key="find.popup" timestamp="1623072510205">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1201" y="352" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1622715098997" />
+    <state x="956" y="433" width="647" height="534" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1623072510205" />
+    <state x="806" y="410" key="new project wizard" timestamp="1623225177715">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="806" y="410" key="new project wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1623225177715" />
+    <state x="1434" y="356" width="672" height="677" key="run.anything.popup" timestamp="1623159288390">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1434" y="356" width="672" height="677" key="run.anything.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1623159288390" />
+    <state x="1201" y="352" width="672" height="676" key="search.everywhere.popup" timestamp="1623226083795">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1201" y="352" width="672" height="676" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1623226083795" />
   </component>
 </project>

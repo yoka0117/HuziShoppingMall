@@ -15,14 +15,16 @@ public interface OrderService {
 
 
     //预定库存(支持部分预订)
-    int reserve();
+    int reserve1();
 
     //取消预订
     int cancelReserve(UserOrder order);
 
     //订单出库确认
-    int orderDelivery(Integer orderId, List<OrderDelivery> orderDelivery);
+    //int orderDelivery(Integer orderId, List<OrderDelivery> orderDelivery);
 
+    //订单出库确认
+    void orderDelivery(UserOrder userOrder);
 
     /*****/
     void checkInventoryUpdateTime();

@@ -61,8 +61,7 @@ public class InventoryServiceImpl implements InventoryService {
                 Integer inventoryId = inventory1.getInventoryId();
                 if (inventoryId != null) {
                     //如果有庫存单---完结详情单
-                    orderDetails.setOrderDetailsState(PurchaseOrderStatus.FINISH.name());
-                    purchaseOrderDao.updateDetails(orderDetails);
+
                     //加库存
                     InventoryParam inventoryParam = new InventoryParam();
                     inventoryParam.setSkuId(orderDetails.getSkuId());
@@ -71,6 +70,9 @@ public class InventoryServiceImpl implements InventoryService {
                     inventoryParam.setRealInventoryAdd(orderDetails.getAmount());
                     inventoryParam.setInventoryUpdateTime(new Date());
                     inventoryDao.updateInventory(inventoryParam);
+
+                    orderDetails.setOrderDetailsState(PurchaseOrderStatus.FINISH.name());
+                    purchaseOrderDao.updateDetails(orderDetails);
                 }else {
                     //如果没有庫存单---完结详情单
                     //新建
@@ -94,19 +96,19 @@ public class InventoryServiceImpl implements InventoryService {
                     purchaseOrderDao.updatePurchase(purchaseOrder);
 
                 }
+            }//查询采购单下面所有详情，如果都完结了，则完结采购单
+            List<OrderDetails> orderDetailsList = purchaseOrderDao.selectOrderDetailsByPurchaseId(purchaseId);
+            for (OrderDetails od : orderDetailsList){
+                if (!PurchaseOrderStatus.FINISH.name().equals(od.getOrderDetailsState())){
+                    return "成功完结";
+                }
+                //完结采购单
+                purchaseOrder.setPurchaseState(PurchaseOrderStatus.FINISH.name());
+                purchaseOrder.setPurchaseUpdateTime(new Date());
+                purchaseOrderDao.updatePurchase(purchaseOrder);
             }
         }
-        //查询采购单下面所有详情，如果都完结了，则完结采购单
-        List<OrderDetails> orderDetailsList = purchaseOrderDao.selectOrderDetailsByPurchaseId(purchaseId);
-        for (OrderDetails od : orderDetailsList){
-            if (!PurchaseOrderStatus.FINISH.name().equals(od.getOrderDetailsState())){
-                return "成功完结";
-            }
-            //完结采购单
-            purchaseOrder.setPurchaseState(PurchaseOrderStatus.FINISH.name());
-            purchaseOrder.setPurchaseUpdateTime(new Date());
-            purchaseOrderDao.updatePurchase(purchaseOrder);
-        }
+
         return "成功完结";
     }
 

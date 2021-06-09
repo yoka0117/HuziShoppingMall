@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+
+//采购订单
 public class PurchaseOrder implements Serializable {
 
 

@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+
+//***2021.6.8
 @Controller
-@RequestMapping("/Sku")
+@RequestMapping("Sku")
 public class SkuController {
 
 
@@ -22,8 +24,8 @@ public class SkuController {
     private SkuService skuService;
 
         //添加SKU
-        @RequestMapping("/insertSKU")
-        public ModelAndView insertSKU(Sku sku){
+        @RequestMapping("/insertSku")
+        public ModelAndView insertSku(Sku sku){
             ModelAndView mv = new ModelAndView();
             String tip = "添加sku失败";
             if(sku.getGoodsId() != 0 && sku.getSkuColor() !=null && sku.getSkuSize() != 0){

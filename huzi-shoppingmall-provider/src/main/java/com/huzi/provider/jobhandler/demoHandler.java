@@ -1,3 +1,4 @@
+/*
 package com.huzi.provider.jobhandler;
 import com.huzi.service.OrderService;
 import com.xxl.job.core.handler.annotation.XxlJob;
@@ -13,7 +14,7 @@ private OrderService orderService;
     @XxlJob("demoJobHandler")
     public void execute(String param) throws Exception {
         System.out.println("cool!!");
-        orderService.reserve();
+        orderService.reserve1();
     }
 
 
@@ -24,3 +25,4 @@ private OrderService orderService;
         orderService.checkInventoryUpdateTime();
     }
 }
+*/

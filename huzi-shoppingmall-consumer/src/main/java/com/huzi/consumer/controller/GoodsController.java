@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 
-//商品有关功能
+//***商品有关功能*** 2021.6.8
 @Controller
 @RequestMapping("goods")
 public class GoodsController {

@@ -85,4 +85,11 @@
         select order_id,warehouse_id,order_state,order_create_time,region_id from t_order
         where order_state = #{orderState}
     </select>
+
+
+    <!--//只查订单状态为INIT 和 LACK 的-->
+    <select id="selectOrderByState2"  resultMap="orderMap">
+        select order_id,warehouse_id,order_state,order_create_time,region_id from t_order
+        where order_state in ( 'LACK' , 'INIT' )
+    </select>
 </mapper>

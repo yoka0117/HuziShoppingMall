@@ -7,4 +7,5 @@ public enum PurchaseOrderStatus {
     LACK,//用户购买订单缺货
     SUCCESS,//用户购买订单预订成功
     DELIVERY //出库成功
+
 }

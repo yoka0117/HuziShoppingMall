@@ -3,6 +3,9 @@ package com.huzi.domain;
 
 import java.io.Serializable;
 
+
+
+//订单明细
 public class OrderDetails implements Serializable {
 
     private int orderDetailsId;

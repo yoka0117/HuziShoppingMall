@@ -53,6 +53,7 @@
 
 
 
+<!--
 
     <select id="selectSKU" resultType="com.huzi.hzsp.domain.product.SKU">
         select sku_id,sku_size,sku_color,goods_id from t_sku
@@ -63,5 +64,6 @@
     <select id="selectSkuById" parameterType="java.lang.Integer" resultMap="skuResultMap">
         select sku_id,sku_size,sku_color,goods_id from t_sku where sku_id = #{skuId}
     </select>
+-->
 
 </mapper>

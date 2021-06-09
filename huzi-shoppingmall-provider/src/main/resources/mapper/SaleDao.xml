@@ -21,8 +21,8 @@
         <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="saleId">
             select LAST_INSERT_ID()
         </selectKey>
-        insert into t_sales(sku_id,amount,order_id,user_id,shop_id,sale_state,already)
-        values(#{skuId},#{amount},#{orderId},#{userId},#{shopId},#{saleState},#{already})
+        insert into t_sales(sku_id,amount,order_id,user_id,shop_id,sale_state,warehouse_id)
+        values(#{skuId},#{amount},#{orderId},#{userId},#{shopId},#{saleState},#{warehouseId})
     </insert>
 
 
@@ -44,6 +44,12 @@
         where order_id = #{orderId}
     </select>
 
+    <select id="selectSaleByOrderIdNumber" parameterType="java.lang.Integer" resultMap="saleMap">
+        select sale_id,sku_id,amount,user_id,order_id,shop_id,sale_state ,already,warehouse_id from t_sales
+        where order_id = #{orderId}
+    </select>
+
+
 
 
     <!--改变sale表状态，并填写缺多少货-->
@@ -56,13 +62,13 @@
 
 
     <select id="selectSaleBySkuIdAmount" resultMap="saleMap">
-        select sale_id,sku_id,amount,user_id,order_id,shop_id,sale_state ,already ,warehouse_idfrom t_sales
+        select sale_id,sku_id,amount,user_id,order_id,shop_id,sale_state ,already ,warehouse_id from t_sales
         where sku_id = #{skuId} and amount = #{amount} and order_id = #{orderId}
     </select>
 
 
 
-    <select id="selectSaleBySkuIdWarehouseId" parameterType="com.huzi.hzsp.domain.userOrder.Sale" resultMap="saleMap">
+    <!--<select id="selectSaleBySkuIdWarehouseId" parameterType="com.huzi.hzsp.domain.userOrder.Sale" resultMap="saleMap">
         select * from t_sales where sku_id = #{skuId} and warehouse_id = #{warehouseId}
-    </select>
+    </select>-->
 </mapper>

@@ -16,6 +16,9 @@ public interface SaleDao {
     //通过orderId查找sale对象
     List<Sale> selectSaleByOrderId(Sale sale);
 
+    //通过orderId查找sale对象(number)
+    List<Sale> selectSaleByOrderIdNumber(Integer orderId);
+
 
     //改变销售表状态（更改缺货、并填写缺多少货）
     int updateSaleState(Sale sale);

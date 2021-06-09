@@ -1,3 +1,4 @@
+/*
 package com.huzi.provider.config;
 
 import com.xxl.job.core.executor.impl.XxlJobSpringExecutor;
@@ -7,11 +8,13 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+*/
 /**
  * xxl-job config
  *
  * @author xuxueli 2017-04-28
- */
+ *//*
+
 @Configuration
 
 public class XxlJobConfig {
@@ -57,7 +60,8 @@ public class XxlJobConfig {
         return xxlJobSpringExecutor;
     }
 
-    /**
+    */
+/**
      * 针对多网卡、容器内部署等情况，可借助 "spring-cloud-commons" 提供的 "InetUtils" 组件灵活定制注册IP；
      *
      *      1、引入依赖：
@@ -72,7 +76,8 @@ public class XxlJobConfig {
      *
      *      3、获取IP
      *          String ip_ = inetUtils.findFirstNonLoopbackHostInfo().getIpAddress();
-     */
+     *//*
 
 
-}
+
+}*/

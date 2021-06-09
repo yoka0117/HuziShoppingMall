@@ -2,7 +2,6 @@ package com.huzi.provider.dao;
 
 import com.huzi.domain.Region;
 import com.huzi.domain.UserOrder;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -28,6 +27,9 @@ public interface OrderDao {
 
     //根据状态查所有Order
     List<UserOrder> selectOrderByState(UserOrder order);
+
+    //只查订单状态为INIT 和 LACK 的
+    List<UserOrder> selectOrderByState2();
 
 
     //选仓
