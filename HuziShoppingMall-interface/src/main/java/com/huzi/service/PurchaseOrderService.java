@@ -22,6 +22,6 @@ public interface PurchaseOrderService {
 
 
 
-    //完结采购单
-    String completePurchase(OrderDetails orderDetails);
+    //完结采购单(仓库系统调用)
+    void completePurchase(List<OrderDetails> orderDetailsList);
 }

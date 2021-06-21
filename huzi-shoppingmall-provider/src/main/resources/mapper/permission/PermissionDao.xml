@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.huzi.provider.dao.permission.PermissionDao">
+
+<resultMap id="permissionMap" type="com.huzi.domain.permission.Permission">
+    <id column="permission_id" property="permissionId"/>
+    <result column="permission_code" property="permissionCode"/>
+    <result column="permission_describe" property="permissionDescribe"/>
+    <result column="permission_creation_time" property="permissionCreationTime"/>
+    <result column="permission_update_time" property="permissionUpdateTime"/>
+    <result column="permission_state" property="permissionState"/>
+</resultMap>
+
+
+    <!--添加权限-->
+    <insert id="addPermission" parameterType="com.huzi.domain.permission.Permission" useGeneratedKeys="true" keyProperty="permissionId" keyColumn="permission_id">
+       <!-- <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="permissionId">
+            select LAST_INSERT_ID()
+        </selectKey>-->
+        insert into t_permission(permission_code,permission_describe,permission_creation_time,permission_state)
+        values(#{permissionCode},#{permissionDescribe},#{permissionCreationTime},#{permissionState})
+    </insert>
+
+
+
+    <!--更改权限状态（根据权限id）-->
+    <update id="discardPermission" parameterType="com.huzi.domain.permission.Permission">
+        update t_permission set permission_update_time = #{permissionUpdateTime} , permission_state = #{permissionState}
+        where permission_id = #{permissionId}
+    </update>
+
+
+
+
+
+
+    <resultMap id="userPermissionMap" type="com.huzi.domain.permission.UserPermission">
+        <id column="user_permission_id" property="userPermissionId"/>
+        <result column="user_id" property="userId"/>
+        <result column="permission_id" property="permissionId"/>
+        <result column="creation_time" property="creationTime"/>
+    </resultMap>
+
+    <!--给用户分配权限(新建添加操作)-->
+    <insert id="setPermissionsForUser" parameterType="com.huzi.domain.permission.UserPermission">
+        insert into t_user_permission(user_id , permission_id,creation_time)
+                values (#{userId},#{permissionId},#{creationTime})
+    </insert>
+
+
+    <delete id="deletePermissionsForUser" parameterType="com.huzi.domain.permission.UserPermission">
+        DELETE FROM t_user_permission WHERE user_id = #{userId} and permission_id = #{permissionId}
+    </delete>
+
+
+
+
+</mapper>

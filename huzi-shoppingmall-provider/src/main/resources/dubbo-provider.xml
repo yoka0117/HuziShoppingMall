@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    
+    <!--服务提供者声明名称：必须保证服务名称的唯一性-->
+    <dubbo:application name="huzi-shoppingmall-provider"/>
+
+    <!--访问服务协议的名称，和端口号-->
+    <dubbo:protocol name="dubbo" port="20881"/>
+
+    <!--指定注册中心地址和端口号-->
+    <dubbo:registry address="zookeeper://localhost:2181"/>
+
+    <!--暴露服务接口 dubbo：service
+        interface:暴露服务接口的全限定名称
+        ref:接口引用实现类在spring容器中的id标识
+        version:版本号
+        timeout：如果调用服务超过规定时间，则会响应超时
+    -->
+    <dubbo:service interface="com.huzi.service.OrderService" ref="orderService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.InventoryService" ref="inventoryService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.SkuService" ref="skuService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.GoodsService" ref="goodsService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.WarehouseService" ref="warehouseService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.SaleService" ref="saleService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.PurchaseOrderService" ref="purchaseOrderService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.UserLoginInformationService" ref="userLoginInformationService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.service.UserLoginService" ref="userLoginService" version="1.0.0" timeout="15000"/>
+    <dubbo:service interface="com.huzi.warehouseinterface.service.OrderManagementService" ref="orderManagementService" version="1.0.0" timeout="15000"/>
+    <dubbo:reference id="orderManagementService" interface="com.huzi.warehouseinterface.service.OrderManagementService" version="1.0.0" check="false"/>
+    <dubbo:service interface="com.huzi.service.permission.PermissionService" ref="permissionService" version="1.0.0" timeout="15000"/>
+    <!--将接口实现类加载到spring容器中-->
+    <bean id="orderService" class="com.huzi.provider.serviceImpl.OrderServiceImpl"/>
+    <bean id="inventoryService" class="com.huzi.provider.serviceImpl.InventoryServiceImpl"/>
+    <bean id="skuService" class="com.huzi.provider.serviceImpl.SkuServiceImpl"/>
+    <bean id="goodsService" class="com.huzi.provider.serviceImpl.GoodsServiceImpl"/>
+    <bean id="warehouseService" class="com.huzi.provider.serviceImpl.WarehouseServiceImpl"/>
+    <bean id="saleService" class="com.huzi.provider.serviceImpl.SaleServiceImpl"/>
+    <bean id="purchaseOrderService" class="com.huzi.provider.serviceImpl.PurchaseOrderServiceImpl"/>
+    <bean id="userLoginInformationService" class="com.huzi.provider.serviceImpl.UserLoginInformationServiceImpl"/>
+    <bean id="userLoginService" class="com.huzi.provider.serviceImpl.UserLoginServiceImpl"/>
+    <bean id="permissionService" class="com.huzi.provider.serviceImpl.permission.PermissionServiceImpl"/>
+
+
+   <!-- <bean id="myAspect" class="com.huzi.provider.aspect.MyAspect" />
+
+    &lt;!&ndash;声明自动代理生成器，使用aspectJ框架内部的功能，创建目标对象的代理对象&ndash;&gt;
+    <aop:aspectj-autoproxy/>-->
+</beans>

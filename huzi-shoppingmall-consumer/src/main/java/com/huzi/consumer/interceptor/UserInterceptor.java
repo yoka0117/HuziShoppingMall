@@ -4,6 +4,7 @@ package com.huzi.consumer.interceptor;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzi.domain.UserLoginInformation;
 import com.huzi.service.UserLoginInformationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import java.util.Date;
 
 public class UserInterceptor implements HandlerInterceptor {
 
-    @Reference(interfaceClass = UserLoginInformationService.class,version = "1.0.0" ,check = false)
+   @Autowired
     private UserLoginInformationService userLoginInformationService;
 
     @Override

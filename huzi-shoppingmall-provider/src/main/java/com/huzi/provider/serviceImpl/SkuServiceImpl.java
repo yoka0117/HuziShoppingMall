@@ -1,6 +1,5 @@
 package com.huzi.provider.serviceImpl;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.huzi.domain.Sku;
 import com.huzi.domain.SkuGoods;
 import com.huzi.provider.dao.SkuDao;
@@ -8,12 +7,12 @@ import com.huzi.service.GoodsService;
 import com.huzi.service.SkuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
-@Component
-@Service(interfaceClass = SkuService.class,version = "1.0.0",timeout = 15000)
+@Service
 public class SkuServiceImpl implements SkuService {
 
     @Autowired

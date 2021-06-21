@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    
+    <!--服务消费者声明名称：必须保证服务名称的唯一性-->
+    <dubbo:application name="huzi-shoppingmall-consumer"/>
+
+    <!--指定注册中心-->
+    <dubbo:registry address="zookeeper://localhost:2181"/>
+
+    <!--
+        引用远程服务接口
+        id：远程服务接口对象名称
+        interface：调用远程接口的全限定名称
+        version:版本号
+        check:检查是否有此服务，为true的话，如果没服务就会停掉
+    -->
+    <dubbo:reference id="orderService" interface="com.huzi.service.OrderService" version="1.0.0" check="false"/>
+    <dubbo:reference id="inventoryService" interface="com.huzi.service.InventoryService" version="1.0.0" check="false"/>
+    <dubbo:reference id="skuService" interface="com.huzi.service.SkuService" version="1.0.0" check="false"/>
+    <dubbo:reference id="goodsService" interface="com.huzi.service.GoodsService" version="1.0.0" check="false"/>
+    <dubbo:reference id="warehouseService" interface="com.huzi.service.WarehouseService" version="1.0.0" check="false"/>
+    <dubbo:reference id="saleService" interface="com.huzi.service.SaleService" version="1.0.0" check="false"/>
+    <dubbo:reference id="purchaseOrderService" interface="com.huzi.service.PurchaseOrderService" version="1.0.0" check="false"/>
+    <dubbo:reference id="userLoginInformationService" interface="com.huzi.service.UserLoginInformationService" version="1.0.0" check="false"/>
+    <dubbo:reference id="userLoginService" interface="com.huzi.service.UserLoginService" version="1.0.0" check="false"/>
+    <dubbo:reference id="permissionService" interface="com.huzi.service.permission.PermissionService" version="1.0.0" check="false" />
+</beans>

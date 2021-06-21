@@ -1,11 +1,11 @@
 package com.huzi.consumer;
 
-import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@EnableDubboConfiguration  //开启dubbo配置
+@ImportResource("classpath:dubbo-consumer.xml")  //开启dubbo配置
 public class HuziShoppingmallConsumerApplication {
 
     public static void main(String[] args) {

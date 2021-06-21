@@ -8,6 +8,7 @@ import com.huzi.service.InventoryService;
 import com.huzi.service.OrderService;
 import com.huzi.service.SaleService;
 import com.huzi.service.WarehouseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,17 +23,17 @@ import java.util.List;
 @RequestMapping("Sale")
 public class SaleController {
 
-    @Reference(interfaceClass = WarehouseService.class,version = "1.0.0" ,check = false)
+   @Autowired
     private WarehouseService warehouseService;
 
-    @Reference(interfaceClass = OrderService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private OrderService orderService;
 
 
-    @Reference(interfaceClass = SaleService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private SaleService saleService;
 
-    @Reference(interfaceClass = InventoryService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private InventoryService inventoryService;
 
 
@@ -95,7 +96,6 @@ public class SaleController {
     public ModelAndView reserve(){
         ModelAndView mv = new ModelAndView();
         String tip = null;
-
 
         int result = orderService.reserve1();
         if (result == 0){

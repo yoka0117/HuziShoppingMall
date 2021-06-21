@@ -11,5 +11,19 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>HuziShoppingMall-interface</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.huzi.warehouse</groupId>
+            <artifactId>warehouse-interface</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
+
+        <!--aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+    </dependencies>
 </project>

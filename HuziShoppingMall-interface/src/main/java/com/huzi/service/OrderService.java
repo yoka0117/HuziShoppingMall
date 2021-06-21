@@ -1,6 +1,5 @@
 package com.huzi.service;
 
-import com.huzi.domain.OrderDelivery;
 import com.huzi.domain.UserOrder;
 import com.huzi.domain.WarehouseRegionMapper;
 

@@ -20,7 +20,7 @@ import java.util.List;
 public class SkuController {
 
 
-    @Reference(interfaceClass = SkuService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private SkuService skuService;
 
         //添加SKU

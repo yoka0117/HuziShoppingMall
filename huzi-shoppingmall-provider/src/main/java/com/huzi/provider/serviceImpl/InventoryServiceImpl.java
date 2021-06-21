@@ -1,6 +1,5 @@
 package com.huzi.provider.serviceImpl;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.huzi.common.PurchaseOrderStatus;
 import com.huzi.domain.Inventory;
 import com.huzi.domain.InventoryParam;
@@ -12,12 +11,13 @@ import com.huzi.service.GoodsService;
 import com.huzi.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-@Component
-@Service(interfaceClass =InventoryService.class,version = "1.0.0",timeout = 15000)
+
+@Service
 public class InventoryServiceImpl implements InventoryService {
 
     @Autowired

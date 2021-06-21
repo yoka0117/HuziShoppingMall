@@ -10,7 +10,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/huzi-shoppingmall-provider/pom.xml" />
         <option value="$PROJECT_DIR$/huzi-shoppingmall-consumer/pom.xml" />
-        <option value="$PROJECT_DIR$/warehouse-provider/pom.xml" />
       </list>
     </option>
   </component>

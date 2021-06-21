@@ -3,6 +3,7 @@ package com.huzi.consumer.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzi.domain.Goods;
 import com.huzi.service.GoodsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("goods")
 public class GoodsController {
 
-    @Reference(interfaceClass = GoodsService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private GoodsService goodsService;
 
     //通过ID查询商品

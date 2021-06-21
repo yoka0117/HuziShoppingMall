@@ -5,6 +5,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzi.domain.OrderDetails;
 import com.huzi.domain.PurchaseOrder;
 import com.huzi.service.PurchaseOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,12 +18,12 @@ import java.util.List;
 @RequestMapping("purchase")
 public class PurchaseOrderController {
 
-    @Reference(interfaceClass = PurchaseOrderService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private PurchaseOrderService purchaseOrderService;
 
 
 
-    // 新增采购单***2021.6.8
+    // 新增采购单***2021.6.13
     @RequestMapping("/insertPurchase")
     public ModelAndView insertPurchase(String skuId , String warehouseId, String amount){
         ModelAndView mv  = new ModelAndView();
@@ -94,13 +95,13 @@ public class PurchaseOrderController {
      *              查skuid+仓库id：    有，更新。          没有，新增
     **/
     //完结采购单
-    @RequestMapping("/completePurchase")
+    /*@RequestMapping("/completePurchase")
     public ModelAndView completePurchase(OrderDetails orderDetails){
         ModelAndView mv = new ModelAndView();
         String result = purchaseOrderService.completePurchase(orderDetails);
         mv.addObject("result",result);
         mv.setViewName("purchaseOrder/completePurchase");
         return  mv;
-    }
+    }*/
 
 }

@@ -1,14 +1,15 @@
 package com.huzi.provider.serviceImpl;
 
-import com.alibaba.dubbo.config.annotation.Service;
+import com.huzi.annotation.MyAnnotation;
 import com.huzi.domain.Goods;
 import com.huzi.provider.dao.GoodsDao;
 import com.huzi.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-@Service(interfaceClass = GoodsService.class,version = "1.0.0",timeout = 15000)
+
+@Service
 public class GoodsServiceImpl implements GoodsService {
 
     @Autowired
@@ -16,6 +17,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     //通过id查询商品
     @Override
+    @MyAnnotation
     public Goods selectGoodsById(Integer id) {
 
         return goodsDao.selectGoods(id);

@@ -1,15 +1,14 @@
 package com.huzi.provider.serviceImpl;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.huzi.domain.User;
 import com.huzi.provider.dao.UserLoginDao;
 import com.huzi.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
-@Service(interfaceClass = UserLoginService.class,version = "1.0.0",timeout = 15000)
+@Service
 public class UserLoginServiceImpl implements UserLoginService {
 
 

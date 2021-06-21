@@ -1,18 +1,17 @@
 package com.huzi.provider.serviceImpl;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.huzi.domain.Sale;
 import com.huzi.provider.dao.SaleDao;
 import com.huzi.service.SaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 
-@Component
-@Service(interfaceClass = SaleService.class,version = "1.0.0",timeout = 15000)
+@Service
 public class SaleServiceImpl implements SaleService {
 
     @Autowired

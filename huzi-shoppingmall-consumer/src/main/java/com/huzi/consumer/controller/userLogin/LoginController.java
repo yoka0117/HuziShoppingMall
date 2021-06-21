@@ -7,6 +7,7 @@ import com.huzi.domain.User;
 import com.huzi.domain.UserLoginInformation;
 import com.huzi.service.UserLoginInformationService;
 import com.huzi.service.UserLoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,10 +20,9 @@ import java.util.Date;
 @RequestMapping("user")
 public class LoginController {
 
-    @Reference(interfaceClass = UserLoginService.class,version = "1.0.0" ,check = false)
+   @Autowired
     private UserLoginService userLoginService;
-
-    @Reference(interfaceClass = UserLoginInformationService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private UserLoginInformationService userLoginInformationService;
 
 

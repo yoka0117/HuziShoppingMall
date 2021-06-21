@@ -9,12 +9,15 @@
         <module name="huzi-shoppingmall-provider" />
         <module name="huzi-shoppingmall-consumer" />
         <module name="HuziShoppingMall-interface" />
-        <module name="warehouse-provider" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="warehouse-provider" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="HuziShoppingMall - 副本 - 副本" options="-parameters" />
       <module name="HuziShoppingMall-interface" options="-parameters" />
       <module name="huzi-shoppingmall-consumer" options="-parameters" />
       <module name="huzi-shoppingmall-provider" options="-parameters" />

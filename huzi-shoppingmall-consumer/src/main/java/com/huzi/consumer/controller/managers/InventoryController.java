@@ -4,6 +4,7 @@ package com.huzi.consumer.controller.managers;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzi.domain.Inventory;
 import com.huzi.service.InventoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class InventoryController {
 
 
-    @Reference(interfaceClass = InventoryService.class,version = "1.0.0" ,check = false)
+    @Autowired
     private InventoryService inventoryService;
 
 

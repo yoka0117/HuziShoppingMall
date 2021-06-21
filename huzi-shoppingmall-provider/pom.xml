@@ -78,11 +78,27 @@
         </dependency>
 
         <dependency>
-            <groupId>com.huzi</groupId>
-            <artifactId>warehouse-provider</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.huzi.warehouse</groupId>
+            <artifactId>warehouse-interface</artifactId>
+            <version>1.0.0</version>
         </dependency>
+
+
+        <!--aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!--aspectJ-->
+        <!--<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>-->
     </dependencies>
+
+
+
 
     <build>
         <plugins>
@@ -91,6 +107,28 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
     </build>
 
 </project>
