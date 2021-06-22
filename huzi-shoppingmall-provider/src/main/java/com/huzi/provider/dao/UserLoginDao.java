@@ -9,4 +9,7 @@ public interface UserLoginDao {
     User checkUser(User user);
 
 
+
+    //根据userName 查 userId
+    User selectUserByUserName(String userName);
 }

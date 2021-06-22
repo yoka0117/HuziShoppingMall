@@ -15,6 +15,11 @@
     <result column="permission_state" property="permissionState"/>
 </resultMap>
 
+    <!--根据permissionId查permission-->
+    <select id="selectPermissionByPermissionId" parameterType="java.lang.String" resultMap="permissionMap">
+        select * from t_permission where permission_id = #{permissionId}
+    </select>
+
 
     <!--添加权限-->
     <insert id="addPermission" parameterType="com.huzi.domain.permission.Permission" useGeneratedKeys="true" keyProperty="permissionId" keyColumn="permission_id">
@@ -55,6 +60,11 @@
     <delete id="deletePermissionsForUser" parameterType="com.huzi.domain.permission.UserPermission">
         DELETE FROM t_user_permission WHERE user_id = #{userId} and permission_id = #{permissionId}
     </delete>
+
+
+    <select id="selectUserPermissionByUserId" parameterType="java.lang.String" resultMap="userPermissionMap">
+        select * from t_user_permission where user_id = #{userId}
+    </select>
 
 
 

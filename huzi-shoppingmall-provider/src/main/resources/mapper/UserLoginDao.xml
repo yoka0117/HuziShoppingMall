@@ -24,6 +24,11 @@
 </select>
 
 
+    <select id="selectUserByUserName" parameterType="java.lang.String" resultMap="UserMap">
+        select * from t_user where user_name = #{userName}
+    </select>
+
+
 
 
 </mapper>

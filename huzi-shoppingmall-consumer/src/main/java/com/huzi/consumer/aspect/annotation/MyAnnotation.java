@@ -1,4 +1,4 @@
-package com.huzi.annotation;
+package com.huzi.consumer.aspect.annotation;
 
 
 import java.lang.annotation.ElementType;
@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface MyAnnotation {
-
+    String value() default "";
 }

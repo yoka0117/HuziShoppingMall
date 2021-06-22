@@ -48,11 +48,17 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
 
+    //根据permissionId查permission
+    @Override
+    public Permission selectPermissionByPermissionId(Integer permissionId) {
+
+        return permissionDao.selectPermissionByPermissionId(permissionId);
+
+    }
 
 
     //给用户增加权限
     @Override
-    @Transactional
     public String setPermissionsForUser(String userID, String permissionID) {
 
         StringBuffer stringBuffer = new StringBuffer("权限增添失败名单如下：");
@@ -141,6 +147,15 @@ public class PermissionServiceImpl implements PermissionService {
             result = stringBuffer.toString();
         }
         return result;
+    }
+
+
+
+
+    //根据用户id查用户权限
+    @Override
+    public UserPermission selectUserPermissionByUserId(Integer userId) {
+        return permissionDao.selectUserPermissionByUserId(userId);
     }
 
 }

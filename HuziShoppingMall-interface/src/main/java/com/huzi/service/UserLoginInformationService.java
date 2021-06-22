@@ -10,4 +10,6 @@ public interface UserLoginInformationService {
 
     //添加用户登录信息
     int insertUserLoginInformation(UserLoginInformation userLoginInformation);
+
+
 }

@@ -45,8 +45,5 @@
     <bean id="permissionService" class="com.huzi.provider.serviceImpl.permission.PermissionServiceImpl"/>
 
 
-   <!-- <bean id="myAspect" class="com.huzi.provider.aspect.MyAspect" />
 
-    &lt;!&ndash;声明自动代理生成器，使用aspectJ框架内部的功能，创建目标对象的代理对象&ndash;&gt;
-    <aop:aspectj-autoproxy/>-->
 </beans>

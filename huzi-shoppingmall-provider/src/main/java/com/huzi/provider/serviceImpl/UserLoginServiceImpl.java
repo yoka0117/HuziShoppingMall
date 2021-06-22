@@ -22,4 +22,11 @@ public class UserLoginServiceImpl implements UserLoginService {
     }
 
 
+    //根据userName查userId
+    @Override
+    public User selectUserByUserName(String userName) {
+        return userLoginDao.selectUserByUserName(userName);
+    }
+
+
 }

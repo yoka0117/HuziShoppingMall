@@ -1,6 +1,7 @@
 package com.huzi.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.huzi.consumer.aspect.annotation.MyAnnotation;
 import com.huzi.domain.Goods;
 import com.huzi.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,9 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+
     //通过ID查询商品
+    @MyAnnotation(value = "goods_service")
     @RequestMapping("/goodsById")
     public String selectGoodsById(Integer goodsId, Model model){
 
