@@ -1,8 +1,7 @@
 package com.huzi.provider.serviceImpl.permission;
 
 import com.huzi.common.PermissionState;
-import com.huzi.domain.permission.Permission;
-import com.huzi.domain.permission.UserPermission;
+import com.huzi.domain.permission.*;
 import com.huzi.provider.dao.permission.PermissionDao;
 import com.huzi.service.permission.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -82,6 +82,7 @@ public class PermissionServiceImpl implements PermissionService {
             UserPermission userPermission = new UserPermission();
             userPermission.setUserId(userId);
             userPermission.setPermissionId(permissionId);
+            userPermission.setPermissionCode(permissionDao.selectPermissionByPermissionId(permissionId).getPermissionCode());
             userPermission.setCreationTime(new Date());
             //将对象存入数据库表中
             if (permissionDao.setPermissionsForUser(userPermission) > 0){
@@ -154,8 +155,25 @@ public class PermissionServiceImpl implements PermissionService {
 
     //根据用户id查用户权限
     @Override
-    public UserPermission selectUserPermissionByUserId(Integer userId) {
-        return permissionDao.selectUserPermissionByUserId(userId);
+    public UserPermission selectUserPermissionByUserIdAndPermissionCode(Integer userId,String permissionCode) {
+        return permissionDao.selectUserPermissionByUserIdAndPermissionCode(userId,permissionCode);
+    }
+
+
+
+
+    //根据用户id，查找所属角色
+    @Override
+    public List<UserRole> selectUserRoleByUserId(Integer userId) {
+        return permissionDao.selectUserRoleByUserId(userId);
+    }
+
+
+
+    //通过角色id和权限code查找是否有此映射对象
+    @Override
+    public RolePermission selectRolePermissionByRoleIdAndPermissionCode(Integer roleId, String permissionCode) {
+        return permissionDao.selectRolePermissionByRoleIdAndPermissionCode(roleId,permissionCode);
     }
 
 }

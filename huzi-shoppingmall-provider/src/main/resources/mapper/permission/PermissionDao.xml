@@ -48,6 +48,7 @@
         <result column="user_id" property="userId"/>
         <result column="permission_id" property="permissionId"/>
         <result column="creation_time" property="creationTime"/>
+        <result column="permission_code" property="permissionCode"/>
     </resultMap>
 
     <!--给用户分配权限(新建添加操作)-->
@@ -62,11 +63,63 @@
     </delete>
 
 
-    <select id="selectUserPermissionByUserId" parameterType="java.lang.String" resultMap="userPermissionMap">
-        select * from t_user_permission where user_id = #{userId}
+    <select id="selectUserPermissionByUserIdAndPermissionCode" resultMap="userPermissionMap">
+        select * from t_user_permission where user_id = #{userId} and permission_code = #{permissionCode}
     </select>
 
 
 
+
+
+    <resultMap id="roleMap" type="com.huzi.domain.permission.Role">
+        <id column="role_id" property="roleId"/>
+        <result column="role_name" property="roleName"/>
+    </resultMap>
+
+    <select id="selectRole" resultMap="roleMap">
+        select * from t_role
+    </select>
+
+
+
+
+
+    <resultMap id="userRoleMap" type="com.huzi.domain.permission.UserRole">
+        <id column="user_role_id" property="userRoleId"/>
+        <result column="role_id" property="roleId"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+    <select id="selectUserRole" resultMap="userRoleMap">
+        select * from t_user_role
+    </select>
+
+
+
+
+    <resultMap id="rolePermissionMap" type="com.huzi.domain.permission.RolePermission">
+        <id column="role_permission_id" property="rolePermissionId"/>
+        <result column="role_id" property="roleId"/>
+        <result column="permission_id" property="permissionId"/>
+        <result column="permission_code" property="permissionCode"/>
+    </resultMap>
+    <select id="selectRolePermission" resultMap="rolePermissionMap">
+        select * from t_role_permission
+    </select>
+
+
+
+
+
+    <!--根据用户id，查找所属角色-->
+    <select id="selectUserRoleByUserId" parameterType="java.lang.Integer" resultMap="userRoleMap">
+        select * from t_user_role where user_id = #{userId}
+    </select>
+
+    <!--通过角色id和权限code查找是否有此映射对象-->
+    <select id="selectRolePermissionByRoleIdAndPermissionCode"
+            resultType="com.huzi.domain.permission.RolePermission">
+
+        select  *  from t_role_permission where role_id = #{ roleId } and permission_code = #{permissionCode}
+    </select>
 
 </mapper>

@@ -3,8 +3,7 @@ import com.huzi.common.MyException;
 import com.huzi.consumer.aspect.annotation.MyAnnotation;
 import com.huzi.domain.User;
 import com.huzi.domain.UserLoginInformation;
-import com.huzi.domain.permission.Permission;
-import com.huzi.domain.permission.UserPermission;
+import com.huzi.domain.permission.*;
 import com.huzi.service.UserLoginInformationService;
 import com.huzi.service.UserLoginService;
 import com.huzi.service.permission.PermissionService;
@@ -23,6 +22,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.List;
 
 
 //aspectJ框架中的注解，表示当前类为切面类
@@ -59,7 +59,16 @@ public class MyAspect {
 
 
         Object result = null;
-
+        //获取目标方法上注解的值
+        Signature signature = pjp.getSignature();
+        MethodSignature methodSignature = (MethodSignature) signature;
+        Method method = methodSignature.getMethod();
+        Class clazz = method.getClass();
+        String module = "";
+        if (clazz.isAnnotationPresent(MyAnnotation.class)){
+            MyAnnotation myAnnotation = (MyAnnotation) clazz.getAnnotation(MyAnnotation.class);
+            module = myAnnotation.value();
+        }
 
         //访问权限验证
         HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
@@ -74,33 +83,22 @@ public class MyAspect {
                     String userName = uf.getUserName();
                     User user = userLoginService.selectUserByUserName(userName);
                     if (null != user){
-                        //根据用户id查权限
-                        Integer userId = user.getId();
-                        UserPermission userPermission = permissionService.selectUserPermissionByUserId(userId);
-                        if (null != userPermission){
-                            //根据permissionId 查 permissionCode
-                            Permission permission = permissionService.selectPermissionByPermissionId(userPermission.getPermissionId());
-                            if (null != permission){
-                                //获取目标方法上注解的值
-                                Signature signature = pjp.getSignature();
-                                MethodSignature methodSignature = (MethodSignature) signature;
-                                Method method = methodSignature.getMethod();
-                                Class clazz = method.getClass();
-                                String module = "";
-                                if (clazz.isAnnotationPresent(MyAnnotation.class)){
-                                    MyAnnotation myAnnotation = (MyAnnotation) clazz.getAnnotation(MyAnnotation.class);
-                                     module = myAnnotation.value();
-                                }
-                                //比较权限是否相同
-                                if (module.equals(permission.getPermissionCode())){
-                                    //执行目标方法
-                                    result = pjp.proceed();
-                                }else {
-                                    //报错
-                                    throw  new  MyException("001","没有权限访问");
-                                }
-                            }
+                       UserPermission userPermission =   permissionService.selectUserPermissionByUserIdAndPermissionCode(user.getId(),module);
+                       //增加角色权限判断，一个用户可能会有多个角色
+                        List<UserRole>  userRoleList  =  permissionService.selectUserRoleByUserId(user.getId());
+                        RolePermission rolePermission = new RolePermission();
+                        for (UserRole userRole : userRoleList){
+                            Integer roleId = userRole.getRoleId();
+                            //查看角色是否包含此权限
+                            rolePermission = permissionService.selectRolePermissionByRoleIdAndPermissionCode(roleId,module);
+                            if (rolePermission != null){break;}
                         }
+
+                       if (null != userPermission  ||  null != rolePermission){
+                           result = pjp.proceed();
+                       }else {
+                           throw  new  MyException("001", "没有访问权限");
+                       }
                     }
                 }
             }

@@ -1,7 +1,8 @@
 package com.huzi.service.permission;
 
-import com.huzi.domain.permission.Permission;
-import com.huzi.domain.permission.UserPermission;
+import com.huzi.domain.permission.*;
+
+import java.util.List;
 
 public interface PermissionService {
 
@@ -28,6 +29,16 @@ public interface PermissionService {
 
 
     //根据用户id查用户权限
-    UserPermission selectUserPermissionByUserId(Integer userId);
+    UserPermission selectUserPermissionByUserIdAndPermissionCode(Integer userId,String permissionCode);
 
+
+
+
+    //根据用户id，查找所属角色
+    List<UserRole> selectUserRoleByUserId(Integer userId);
+
+
+
+    //通过角色id和权限code查找是否有此映射对象
+    RolePermission selectRolePermissionByRoleIdAndPermissionCode(Integer roleId , String  permissionCode);
 }

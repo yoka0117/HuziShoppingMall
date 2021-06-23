@@ -7,8 +7,17 @@ public class UserPermission implements Serializable {
 
     private Integer userPermissionId;
     private Integer permissionId;
+    private String permissionCode;
     private Integer userId;
     private Date creationTime;
+
+    public String getPermissionCode() {
+        return permissionCode;
+    }
+
+    public void setPermissionCode(String permissionCode) {
+        this.permissionCode = permissionCode;
+    }
 
     public Integer getUserPermissionId() {
         return userPermissionId;
