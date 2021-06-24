@@ -5,6 +5,7 @@ import com.huzi.domain.permission.*;
 import com.huzi.provider.dao.permission.PermissionDao;
 import com.huzi.service.permission.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,8 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Autowired
     private PermissionDao permissionDao;
+    @Autowired
+    private RedisTemplate<Object,Object> redisTemplate;
 
     //创建权限
     @Override
@@ -86,6 +89,9 @@ public class PermissionServiceImpl implements PermissionService {
             userPermission.setCreationTime(new Date());
             //将对象存入数据库表中
             if (permissionDao.setPermissionsForUser(userPermission) > 0){
+                //存入redis中
+                redisTemplate.opsForHash().put("userPermission",userId,permissionId);
+
                 //成功，开始下次循环
                 break;
             }else {

@@ -5,6 +5,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.huzi.domain.UserLoginInformation;
 import com.huzi.service.UserLoginInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ public class UserInterceptor implements HandlerInterceptor {
 
    @Autowired
     private UserLoginInformationService userLoginInformationService;
+   @Autowired
+   private RedisTemplate<Object,Object> redisTemplate;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -32,12 +35,13 @@ public class UserInterceptor implements HandlerInterceptor {
         for (Cookie cookies : cookie){
             //判断是否有叫"sessionID"的key
             if ("sessionId".equals(cookies.getName())){
-                //如果有，比较value还有有效期
-               UserLoginInformation userLoginInformation =userLoginInformationService.selectBySessionId(cookies.getValue());
-                if (null != userLoginInformation ) {
-                    Long effectiveTime = userLoginInformation.getEffectiveTime().getTime();
+                //如果有，比较value还有有效期(操作redis)
+                Boolean isEmpty = redisTemplate.boundHashOps("loginKey").hasKey(cookies.getValue());
+                if (isEmpty == true){
+                    String value = (String) redisTemplate.boundHashOps("loginKey").get(cookies.getValue());
+                    Long effectiveTime = Long.parseLong(value);
                     Long nowTime = new Date().getTime();
-                    if (nowTime - effectiveTime < 0) {
+                    if (nowTime - effectiveTime < 0){
                         return true;
                     }
                 }

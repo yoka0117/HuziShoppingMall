@@ -84,20 +84,25 @@ public class MyAspect {
                     User user = userLoginService.selectUserByUserName(userName);
                     if (null != user){
                        UserPermission userPermission =   permissionService.selectUserPermissionByUserIdAndPermissionCode(user.getId(),module);
-                       //增加角色权限判断，一个用户可能会有多个角色
-                        List<UserRole>  userRoleList  =  permissionService.selectUserRoleByUserId(user.getId());
-                        RolePermission rolePermission = new RolePermission();
-                        for (UserRole userRole : userRoleList){
-                            Integer roleId = userRole.getRoleId();
-                            //查看角色是否包含此权限
-                            rolePermission = permissionService.selectRolePermissionByRoleIdAndPermissionCode(roleId,module);
-                            if (rolePermission != null){break;}
-                        }
-
-                       if (null != userPermission  ||  null != rolePermission){
+                       if(null != userPermission){
                            result = pjp.proceed();
                        }else {
-                           throw  new  MyException("001", "没有访问权限");
+                           //增加角色权限判断，一个用户可能会有多个角色
+                           List<UserRole> userRoleList = permissionService.selectUserRoleByUserId(user.getId());
+                           RolePermission rolePermission = new RolePermission();
+                           for (UserRole userRole : userRoleList) {
+                               Integer roleId = userRole.getRoleId();
+                               //查看角色是否包含此权限
+                               rolePermission = permissionService.selectRolePermissionByRoleIdAndPermissionCode(roleId, module);
+                               if (rolePermission != null) {
+                                   break;
+                               }
+                           }
+                           if (null != rolePermission) {
+                               result = pjp.proceed();
+                           } else {
+                               throw new MyException("001", "没有访问权限");
+                           }
                        }
                     }
                 }

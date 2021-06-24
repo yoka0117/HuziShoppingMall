@@ -8,6 +8,7 @@ import com.huzi.domain.UserLoginInformation;
 import com.huzi.service.UserLoginInformationService;
 import com.huzi.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,6 +25,8 @@ public class LoginController {
     private UserLoginService userLoginService;
     @Autowired
     private UserLoginInformationService userLoginInformationService;
+    @Autowired
+    private RedisTemplate<Object,Object> redisTemplate;
 
 
     @RequestMapping("/login")
@@ -54,6 +57,9 @@ public class LoginController {
 
         Cookie cookie = new Cookie("sessionId",sessionId);
         response.addCookie(cookie);
+
+        //存入redis中
+        redisTemplate.opsForHash().put("loginKey",sessionId,now.getTime());
 
 
         return "login/loginSuccess";

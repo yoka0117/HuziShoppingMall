@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="56f8c19f-6961-4714-a6f1-cc0d20fde9f7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/permission/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/permission/RolePermission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/permission/UserRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/permission/UserPermission.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/domain/permission/UserPermission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/permission/PermissionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/HuziShoppingMall-interface/src/main/java/com/huzi/service/permission/PermissionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/aspect/MyAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/aspect/MyAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/permission/PermissionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/dao/permission/PermissionDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/userLogin/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/controller/userLogin/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/interceptor/UserInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-consumer/src/main/java/com/huzi/consumer/interceptor/UserInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/permission/PermissionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/java/com/huzi/provider/serviceImpl/permission/PermissionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/permission/PermissionDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/mapper/permission/PermissionDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/huzi-shoppingmall-provider/src/main/resources/application-dev.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,6 +198,7 @@
       <workItem from="1624268311013" duration="5735000" />
       <workItem from="1624352986857" duration="6252000" />
       <workItem from="1624437211286" duration="7263000" />
+      <workItem from="1624523368700" duration="5561000" />
     </task>
     <task id="LOCAL-00001" summary="2021.6.3">
       <created>1622719770343</created>
@@ -295,10 +293,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="877" y="434" key="#xdebugger.evaluate/0.0.2560.1400@0.0.2560.1400" timestamp="1623156529539" />
-    <state x="692" y="316" key="CommitChangelistDialog2" timestamp="1624360503674">
+    <state x="692" y="316" key="CommitChangelistDialog2" timestamp="1624446885062">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="692" y="316" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1624360503674" />
+    <state x="692" y="316" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1624446885062" />
     <state width="444" height="466" key="DebuggerActiveHint" timestamp="1623158880702">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -371,10 +369,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1420" y="363" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1623500083123" />
-    <state x="783" y="450" key="Vcs.Push.Dialog.v2" timestamp="1624360507370">
+    <state x="783" y="450" key="Vcs.Push.Dialog.v2" timestamp="1624446888170">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="783" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1624360507370" />
+    <state x="783" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1624446888170" />
     <state x="1237" y="529" key="chooseDestDirectoryDialog" timestamp="1624010632099">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -391,10 +389,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="956" y="433" width="647" height="534" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1623072510205" />
-    <state x="806" y="410" key="new project wizard" timestamp="1623316092826">
+    <state x="806" y="410" key="new project wizard" timestamp="1624524874281">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="806" y="410" key="new project wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1623316092826" />
+    <state x="806" y="410" key="new project wizard/0.0.2560.1400@0.0.2560.1400" timestamp="1624524874281" />
     <state x="1434" y="356" width="672" height="677" key="run.anything.popup" timestamp="1624442968511">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
